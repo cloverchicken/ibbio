@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tín hiệu hoá học - IB Biology HL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#ffffff;--card:#ffffff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--faint:#94a3b8;--line:#e2e8f0;--line2:#cbd5e1;
+  --blue:#2563eb;--blue-h:#1d4ed8;--blue-bg:#eff6ff;--blue-bd:#bfdbfe;--blue-ink:#1e3a8a;--blue-ring:#bfdbfe;
+  --em:#059669;--em-h:#047857;--em-bg:#ecfdf5;--em-bd:#a7f3d0;--em-ink:#065f46;--em-pill:#d1fae5;
+  --am-bg:#fffbeb;--am-bd:#fcd34d;--am-ink:#78350f;
+  --ro-bg:#fff1f2;--ro-bd:#fecdd3;--ro-ink:#9f1239;
+  --vi-bg:#f5f3ff;--vi-bd:#ddd6fe;--vi-ink:#5b21b6;
+  --pill-off:#f1f5f9;--sticky:rgba(255,255,255,.96);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:150px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;-webkit-text-size-adjust:100%}
+button,select,input{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:12px 12px 24px}
+@media(min-width:640px){.wrap{padding:20px 20px 32px}}
+/* ===== Thanh trên cùng - giống app NCKH ===== */
+body{padding-top:176px}
+.top{position:fixed;top:0;left:0;right:0;z-index:40;background:var(--sticky);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1180px;margin:0 auto;padding:10px 20px 12px}
+.top-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.brand{font-size:.75rem;font-weight:600;color:var(--blue);margin:0}
+.title{font-size:1.25rem;font-weight:800;margin:0;line-height:1.3}
+@media(min-width:640px){.title{font-size:1.45rem}}
+.sub{font-size:.9rem;color:var(--ink2);margin:2px 0 10px;max-width:92ch}
+.lang{display:flex;border:2px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);flex-shrink:0}
+.lang button{border:0;background:transparent;padding:5px 12px;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer}
+.lang button.on{background:var(--blue);color:#fff}
+.lang button:focus-visible{outline:none;box-shadow:inset 0 0 0 3px var(--blue-ring)}
+.pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.pill{flex-shrink:0;border:0;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer;background:var(--card);color:var(--muted);box-shadow:inset 0 0 0 2px var(--line)}
+.pill.on{background:var(--blue);color:#fff;box-shadow:0 1px 3px rgba(37,99,235,.35)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{background:var(--pill-off);border-radius:999px;padding:2px 10px;font-size:.72rem;font-weight:600;color:var(--ink2)}
+.chip.hl{background:#fef3c7;color:var(--am-ink);box-shadow:inset 0 0 0 1px var(--am-bd)}
+.ver{font-size:.72rem;color:var(--faint);font-weight:600}
+/* ===== Thẻ, nút - giống app NCKH ===== */
+main.wrap{padding-top:16px}
+section.tab{display:none}
+section.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:0 0 16px}
+.card h2{font-size:1.1rem;font-weight:700;margin:0 0 6px;display:flex;gap:8px;align-items:center}
+.card h3{font-size:.98rem;font-weight:700;margin:14px 0 6px;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+canvas.sim{width:100%;height:auto;background:linear-gradient(#eff6ff 0 44%,#fffbeb 44% 100%);border:1px solid var(--line);border-radius:12px;display:block}
+#rxSvg [data-h]{cursor:pointer}
+#rxSvg circle[data-h]:hover{filter:brightness(1.25)}
+.simcol{display:flex;flex-direction:column;gap:12px;min-width:0}
+.btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.opt.sel{border-color:var(--blue);background:#dbeafe;font-weight:700}
+.optgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:640px){.optgrid{grid-template-columns:1fr}}
+.lvl{display:inline-block;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:99px;background:#eef2ff;color:#3730a3;margin-right:6px;vertical-align:2px}
+.examta{width:100%;min-height:76px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;resize:vertical;background:#fff}
+.scheme{background:var(--am-bg);border:1px solid var(--am-bd);border-radius:12px;padding:10px 14px;margin:8px 0;color:var(--am-ink)}
+.selfmark{width:74px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;font:inherit}
+.exscore{font-size:1.25rem;font-weight:800;color:var(--blue)}
+.ctl{margin:10px 0}
+.ctl label{font-weight:600;font-size:.86rem;display:flex;justify-content:space-between;gap:8px}
+.ctl input[type=range]{width:100%;accent-color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:12px;border:2px solid transparent;padding:9px 16px;font-size:.875rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s;background:var(--blue);color:#fff}
+.btn:hover{background:var(--blue-h)}
+.btn:active{transform:scale(.98)}
+.btn.secondary{background:var(--card);border-color:var(--line);color:var(--ink2)}
+.btn.secondary:hover{border-color:#60a5fa;color:var(--blue)}
+.btn.warn{background:var(--am-bg);border-color:var(--am-bd);color:var(--am-ink)}
+.btn.warn:hover{filter:brightness(.98)}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.meter{height:8px;background:var(--pill-off);border-radius:99px;overflow:hidden;margin:6px 0}
+.meter>div{height:100%;background:var(--blue);transition:width .3s}
+.small{font-size:.85rem;color:var(--muted)}
+.note{background:var(--blue-bg);border:1px solid var(--blue-bd);border-radius:12px;padding:10px 12px;margin:10px 0;color:var(--blue-ink)}
+.warnbox{background:var(--am-bg);border:1px solid var(--am-bd);border-radius:12px;padding:10px 12px;margin:10px 0;color:var(--am-ink)}
+.okbox{background:var(--em-bg);border:1px solid var(--em-bd);border-radius:12px;padding:10px 12px;margin:10px 0;color:var(--em-ink)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--blue-bg);color:var(--blue-ink)}
+.kw{font-weight:700;color:var(--blue)}
+.map{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.node{border:2px solid var(--line);background:#fff;border-radius:8px;padding:6px 11px;font-size:.82rem;cursor:pointer;font-weight:600;color:var(--ink2)}
+.node.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.arrow{color:var(--blue);font-weight:800}
+.fun{border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;background:#fff}
+.fun.on{border-color:var(--blue);background:var(--blue-bg)}
+.fun b{color:var(--ink)}
+.abo{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.abo button{border:2px solid var(--line);background:#fff;border-radius:8px;padding:8px 14px;font-size:.92rem;cursor:pointer;font-weight:700;color:var(--ink2)}
+.abo button.on{border-color:#e11d48;background:var(--ro-bg);color:var(--ro-ink)}
+.q{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;background:#fff}
+.q p{margin:0 0 8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;margin:5px 0;cursor:pointer;font-size:.9rem}
+.opt:hover{border-color:#60a5fa}
+.opt.right{border-color:var(--em);background:var(--em-bg);color:var(--em-ink);font-weight:600}
+.opt.wrong{border-color:#e11d48;background:var(--ro-bg);color:var(--ro-ink)}
+.fb{font-size:.88rem;margin-top:6px;display:none}
+.check{list-style:none;padding:0;margin:0}
+.check li{padding:6px 8px;border-bottom:1px dashed var(--line);font-size:.9rem}
+.check input{margin-right:8px;accent-color:var(--blue)}
+svg text{font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;margin-top:8px;color:var(--ink2)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:4px}
+footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);font-size:.8rem}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;border-radius:99px;padding:8px 18px;font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;z-index:60}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.mtile{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#f8fafc}
+.mtile b{display:block;margin-bottom:2px}
+.stepchip{cursor:pointer}
+.stepchip.on{border-color:var(--blue);background:#dbeafe}
+.fx{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}
+.fx b{display:block;color:var(--blue);margin-bottom:2px}
+.bigcount{font-size:1.5rem;font-weight:800;color:var(--blue)}
+.t1cols{display:grid;grid-template-columns:300px 1fr;gap:14px}
+#modeInfo .fx{flex:1}
+@media(max-width:900px){.t1cols{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="top-inner">
+    <div class="top-row">
+      <div>
+        <p class="brand">IB BIOLOGY</p>
+        <h1 class="title" data-t="title">Tín hiệu hoá học</h1>
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="vi" class="on">VI</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+    <div class="pills" id="tabbar">
+      <button type="button" class="pill on" data-tab="t1" data-t="tab1">1 · Sơ đồ động</button>
+      <button type="button" class="pill" data-tab="t2" data-t="tab2">2 · Thụ thể &amp; phân tử tín hiệu</button>
+      <button type="button" class="pill" data-tab="t3" data-t="tab3">3 · Phạm vi &amp; loại thụ thể</button>
+      <button type="button" class="pill" data-tab="t4" data-t="tab4">4 · Truyền tín hiệu &amp; GPCR</button>
+      <button type="button" class="pill" data-tab="t5" data-t="tab5">5 · Ba cơ chế mẫu</button>
+      <button type="button" class="pill" data-tab="t6" data-t="tab6">6 · Bài kiểm tra thử</button>
+    </div>
+    <div class="chips">
+      <span class="chip">C3.1.11 SL</span><span class="chip">C3.1.12 SL</span>
+      <span class="chip hl">C2.1.1 HL</span><span class="chip hl">C2.1.3 HL</span><span class="chip hl">C2.1.4 HL</span><span class="chip hl">C2.1.5 HL</span>
+      <span class="chip hl">C2.1.6 HL</span><span class="chip hl">C2.1.7 HL</span><span class="chip hl">C2.1.9 HL</span><span class="chip hl">C2.1.10 HL</span><span class="chip hl">C2.1.11 HL</span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+<!-- ============ TAB 1 ============ -->
+<section class="tab on" id="t1">
+<div class="card">
+<h2 data-t="s1h">Sơ đồ động - Hành trình của một tín hiệu hoá học</h2>
+<p data-t="s1p">Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích. Chọn một trong ba kiểu truyền tín hiệu dưới đây và quan sát: chất di chuyển giữa các vị trí ra sao, gắn vào đâu, và biến đổi điều gì bên trong tế bào đích.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<button type="button" class="btn on" id="mHorm" data-t="mHorm">Hormone theo dòng máu</button>
+<button type="button" class="btn secondary" id="mSyn" data-t="mSyn">Chất dẫn truyền qua khe synapse</button>
+<button type="button" class="btn secondary" id="mSter" data-t="mSter">Hormone steroid vào trong tế bào</button>
+</div>
+<div class="t1cols">
+<div id="modeInfo" style="display:flex;flex-direction:column;gap:10px;height:100%"></div>
+<div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px" id="jChips"></div>
+<canvas class="sim" id="cvJourney" width="1080" height="470"></canvas>
+<p style="margin-top:8px"><b id="jStep"></b></p>
+<div class="note" id="jInfo"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ TAB 2 ============ -->
+<section class="tab" id="t2">
+<div class="card">
+<h2 data-t="s2ah">C2.1.1 HL - Thụ thể: protein có vị trí gắn đặc hiệu</h2>
+<p data-t="s2ap">Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định. Chọn một phân tử tín hiệu rồi bấm vào thụ thể mà em dự đoán nó sẽ gắn; chỉ khi hình dạng khớp nhau, tín hiệu mới được khởi phát.</p>
+<div class="grid2">
+<div>
+<p><b data-t="specPickL">Chọn phân tử tín hiệu:</b></p>
+<div style="display:flex;gap:8px;flex-wrap:wrap" id="specLigs"></div>
+<p style="margin-top:14px"><b data-t="specPickR">Chọn thụ thể</b></p>
+<div style="display:flex;gap:8px;flex-wrap:wrap" id="specRecs"></div>
+</div>
+<div>
+<canvas class="sim" id="cvSpec" width="520" height="220"></canvas>
+<div class="note" id="specFb" style="margin-top:8px"></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h2 data-t="s2bh">C2.1.3 HL - Bốn nhóm phân tử tín hiệu ở động vật</h2>
+<div id="catTable"></div>
+</div>
+<div class="card">
+<h2 data-t="s2ch">C2.1.4 HL - Sự đa dạng hoá học của hormone và chất dẫn truyền</h2>
+<p data-t="s2cp">Mọi phân tử tín hiệu đều có chung các tính chất: được tiết ra từ một tế bào, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu và gây đáp ứng - dù bản chất hoá học của chúng rất khác nhau.</p>
+<h3 data-t="s2ch1">Hormone - ba nhóm hoá học</h3>
+<div class="grid3" id="hormTiles"></div>
+<h3 data-t="s2ch2">Chất dẫn truyền thần kinh - bốn nhóm hoá học</h3>
+<div class="grid3" id="ntTiles"></div>
+</div>
+</section>
+
+<!-- ============ TAB 3 ============ -->
+<section class="tab" id="t3">
+<div class="card">
+<h2 data-t="s3ah">C2.1.5 HL - Tác động tại chỗ và tác động xa</h2>
+<p data-t="s3ap">Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc. Bấm Chạy và so sánh hai hành trình.</p>
+<canvas class="sim" id="cvRace" width="1080" height="300"></canvas>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+<button type="button" class="btn" id="bRaceGo" data-t="bRaceGo">▶ Chạy cả hai</button>
+<button type="button" class="btn secondary" id="bRaceReset" data-t="bRaceReset">↺ Đặt lại</button>
+</div>
+<p style="margin-top:8px"><b id="raceInfo"></b></p>
+</div>
+<div class="card">
+<h2 data-t="s3bh">C2.1.6 HL - Thụ thể xuyên màng và thụ thể nội bào</h2>
+<p data-t="s3bp">Bấm vào từng thành phần trong hình để đối chiếu hai loại thụ thể: vị trí, bản chất của phân tử tín hiệu, và sự phân bố amino acid ưa nước / kị nước trên thụ thể.</p>
+<div style="position:relative">
+<svg id="rxSvg" viewBox="0 0 1080 340" style="width:100%;height:auto;display:block;background:#f8fafc;border:1.5px solid var(--line);border-radius:14px"></svg>
+<div id="rxTip" style="position:absolute;display:none;pointer-events:none;background:#0f172a;color:#fff;padding:8px 11px;border-radius:10px;font-size:12.5px;line-height:1.5;max-width:255px;z-index:6;box-shadow:0 6px 18px rgba(15,23,42,.25)"></div>
+</div>
+<div class="note" style="margin-top:10px" id="rxInfo"></div>
+</div>
+</section>
+
+<!-- ============ TAB 4 ============ -->
+<section class="tab" id="t4">
+<div class="card">
+<h2 data-t="s4ah">C2.1.7 HL - Khởi phát đường truyền tín hiệu: thác khuếch đại</h2>
+<p data-t="s4ap">Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại. Bấm Chạy và xem các con số nhân lên.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<button type="button" class="btn" id="bCasc" data-t="bCasc">▶ Chạy thác khuếch đại</button>
+</div>
+<canvas class="sim" id="cvCasc" width="1080" height="430"></canvas>
+<div class="grid2" style="margin-top:12px" id="cascDefs"></div>
+</div>
+<div class="card">
+<h2 data-t="s4bh">C2.1.9 HL - Thụ thể liên kết G protein (GPCR)</h2>
+<p data-t="s4bp">GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt. Bấm Gắn phân tử tín hiệu để chạy cơ chế.</p>
+<canvas class="sim" id="cvGPCR" width="1080" height="420"></canvas>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+<button type="button" class="btn" id="bGpGo" data-t="bGpGo">▶ Gắn phân tử tín hiệu vào GPCR</button>
+<button type="button" class="btn secondary" id="bGpReset" data-t="bGpReset">↺ Đặt lại</button>
+</div>
+<p style="margin-top:8px"><b id="gpStep"></b></p>
+<p class="small" data-t="s4bnote">Ví dụ phân tử tín hiệu của GPCR: epinephrine, glucagon, serotonin, nhiều hormone peptide và chất dẫn truyền. Ở người có hàng trăm loại GPCR khác nhau.</p>
+</div>
+</section>
+
+<!-- ============ TAB 5 ============ -->
+<section class="tab" id="t5">
+<div class="card">
+<h2 data-t="s5ah">C2.1.10 HL + C3.1.12 SL - Epinephrine: tín hiệu "chiến đấu hay bỏ chạy"</h2>
+<p data-t="s5ap">Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai. Lật từng bước của cơ chế rồi xem toàn cảnh tác động lên cơ thể.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<button type="button" class="btn secondary" id="bEpiPrev" data-t="bPrev">← Bước trước</button>
+<button type="button" class="btn" id="bEpiNext" data-t="bNext">Bước tiếp →</button>
+<button type="button" class="btn secondary" id="bEpiReset" data-t="bReset">↺ Đặt lại</button>
+</div>
+<div class="note" id="epiStep"></div>
+<canvas class="sim" id="cvEpi" width="1080" height="400" style="margin-top:12px"></canvas>
+<h3 data-t="s5afxh">Tác động của epinephrine lên cơ thể</h3>
+<div class="grid3" id="epiFx"></div>
+</div>
+<div class="card">
+<h2 data-t="s5bh">C2.1.11 HL - Insulin: thụ thể có hoạt tính tyrosine kinase</h2>
+<p data-t="s5bp">Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose. Lật từng bước để xem mô hình cơ chế.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<button type="button" class="btn secondary" id="bInsPrev" data-t="bPrev">← Bước trước</button>
+<button type="button" class="btn" id="bInsNext" data-t="bNext">Bước tiếp →</button>
+<button type="button" class="btn secondary" id="bInsReset" data-t="bReset">↺ Đặt lại</button>
+</div>
+<div class="note" id="insStep"></div>
+<canvas class="sim" id="cvIns" width="1080" height="400" style="margin-top:12px"></canvas>
+</div>
+<div class="card">
+<h2 data-t="s5ch">C3.1.11 SL - Melatonin và nhịp sinh học ngày - đêm</h2>
+<p data-t="s5cp">Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế. Kéo thanh giờ trong ngày và quan sát cả ba mắt xích thay đổi cùng nhau.</p>
+<canvas class="sim" id="cvMel" width="1080" height="300"></canvas>
+<div class="ctl"><label><span data-t="melHourL">🕐 Giờ trong ngày</span><span id="vHour">22:00</span></label>
+<input type="range" id="rHour" min="0" max="23" value="22"></div>
+<p style="margin-top:6px"><b id="melInfo"></b></p>
+</div>
+</section>
+
+<!-- ============ TAB 6 ============ -->
+<section class="tab" id="t6">
+<div class="card" id="examCard">
+<h2 id="exTitle">ĐỀ KIỂM TRA - TÍN HIỆU HOÁ HỌC (HL)</h2>
+<div id="exControls" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0"></div>
+<div id="exMcq"></div>
+<div id="exWritten"></div>
+<div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+<button type="button" class="btn" id="bSubmitExam">Kiểm tra</button>
+</div>
+<div id="exResult" style="margin-top:12px"></div>
+</div>
+</section>
+</main>
+
+<script>
+"use strict";
+var LANG='vi'; try{LANG=localStorage.getItem('ib_signal_lang')||'vi';}catch(e){}
+if(LANG!=='en')LANG='vi';
+var I18N={
+vi:{
+title:"Tín hiệu hoá học",tab1:"1 · Sơ đồ động",tab2:"2 · Thụ thể & phân tử tín hiệu",tab3:"3 · Phạm vi & loại thụ thể",tab4:"4 · Truyền tín hiệu & GPCR",tab5:"5 · Ba cơ chế mẫu",tab6:"6 · Bài kiểm tra thử",
+s1h:"Sơ đồ động - Hành trình của một tín hiệu hoá học",
+s1p:"Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích. Chọn một trong ba kiểu truyền tín hiệu dưới đây và quan sát: chất di chuyển giữa các vị trí ra sao, gắn vào đâu, và biến đổi điều gì bên trong tế bào đích.",
+mHorm:"Hormone theo dòng máu",mSyn:"Chất dẫn truyền qua khe synapse",mSter:"Hormone steroid vào trong tế bào",
+s1bh:"Năm bước của một hành trình tín hiệu",s1bp:"Bấm vào từng bước để xem nội dung cốt lõi.",
+s2ah:"C2.1.1 HL - Thụ thể: protein có vị trí gắn đặc hiệu",
+s2ap:"Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định. Chọn một phân tử tín hiệu rồi bấm vào thụ thể mà em dự đoán nó sẽ gắn; chỉ khi hình dạng khớp nhau, tín hiệu mới được khởi phát.",
+specPickL:"Chọn phân tử tín hiệu:",specPickR:"Chọn thụ thể",
+s2anote:"Việc gắn là thuận nghịch: phân tử tín hiệu gắn vào rồi lại rời ra, nên tín hiệu tắt được khi phân tử tín hiệu biến mất.",
+s2bh:"C2.1.3 HL - Bốn nhóm phân tử tín hiệu ở động vật",
+s2ch:"C2.1.4 HL - Sự đa dạng hoá học của hormone và chất dẫn truyền",
+s2cp:"Mọi phân tử tín hiệu đều có chung các tính chất: được tiết ra từ một tế bào, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu và gây đáp ứng - dù bản chất hoá học của chúng rất khác nhau.",
+s2ch1:"Hormone - ba nhóm hoá học",s2ch2:"Chất dẫn truyền thần kinh - bốn nhóm hoá học",
+s3ah:"C2.1.5 HL - Tác động tại chỗ và tác động xa",
+s3ap:"Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc. Bấm Chạy và so sánh hai hành trình.",
+bRaceGo:"▶ Chạy cả hai",bRaceReset:"↺ Đặt lại",
+s3bh:"C2.1.6 HL - Thụ thể xuyên màng và thụ thể nội bào",
+s3bp:"Bấm vào từng thành phần trong hình để đối chiếu hai loại thụ thể: vị trí, bản chất của phân tử tín hiệu, và sự phân bố amino acid ưa nước / kị nước trên thụ thể.",
+s4ah:"C2.1.7 HL - Khởi phát đường truyền tín hiệu: thác khuếch đại",
+s4ap:"Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại. Bấm Chạy và xem các con số nhân lên.",
+bCasc:"▶ Chạy thác khuếch đại",
+s4bh:"C2.1.9 HL - Thụ thể liên kết G protein (GPCR)",
+s4bp:"GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt. Bấm Gắn phân tử tín hiệu để chạy cơ chế.",
+bGpGo:"▶ Gắn phân tử tín hiệu vào GPCR",bGpReset:"↺ Đặt lại",
+s4bnote:"Ví dụ phân tử tín hiệu của GPCR: epinephrine, glucagon, serotonin, nhiều hormone peptide và chất dẫn truyền. Ở người có hàng trăm loại GPCR khác nhau.",
+s5ah:"C2.1.10 HL + C3.1.12 SL - Epinephrine: tín hiệu 'chiến đấu hay bỏ chạy'",
+s5ap:"Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai. Lật từng bước của cơ chế rồi xem toàn cảnh tác động lên cơ thể.",
+bPrev:"← Bước trước",bNext:"Bước tiếp →",bReset:"↺ Đặt lại",s5afxh:"Tác động của epinephrine lên cơ thể",
+s5anos:"Góc NOS: 'adrenaline' (tiếng Latin: ad = ở tại, ren = thận) và 'epinephrine' (tiếng Hy Lạp cổ: epi = ở trên, nephros = thận) đều chỉ hormone của tuyến nằm trên thận - hai tên gọi cùng tồn tại ở các vùng khác nhau trên thế giới là một ví dụ về hợp tác quốc tế trong khoa học.",
+s5bh:"C2.1.11 HL - Insulin: thụ thể có hoạt tính tyrosine kinase",
+s5bp:"Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose. Lật từng bước để xem mô hình cơ chế.",
+bInsGo:"▶ Tiết insulin",bInsReset:"↺ Đặt lại",
+s5ch:"C3.1.11 SL - Melatonin và nhịp sinh học ngày - đêm",
+s5cp:"Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế. Kéo thanh giờ trong ngày và quan sát cả ba mắt xích thay đổi cùng nhau.",
+melHourL:"🕐 Giờ trong ngày",
+dyn:{
+legend:[["#e4572e","Phân tử tín hiệu (phân tử tín hiệu)"],["#7c3aed","Thụ thể"],["#2563eb","Màng tế bào"],["#f59e0b","Chất truyền tin thứ hai (cAMP)"],["#16a34a","Đáp ứng của tế bào"]],
+jSteps:[
+{t:"1 · Tiết ra",d:"Tế bào nguồn tiết phân tử tín hiệu ra ngoài: tuyến nội tiết tiết hormone vào máu, đầu tận cùng neuron tiết chất dẫn truyền vào khe synapse."},
+{t:"2 · Di chuyển",d:"Phân tử tín hiệu di chuyển tới tế bào đích: theo dòng máu đi xa khắp cơ thể, khuếch tán qua khe synapse cực ngắn, hoặc khuếch tán qua dịch mô tới tế bào kề bên."},
+{t:"3 · Gắn vào thụ thể",d:"Chỉ tế bào nào có thụ thể với vị trí gắn khớp hình dạng với phân tử tín hiệu mới 'nghe' được tín hiệu - đó là tính đặc hiệu của tín hiệu hoá học."},
+{t:"4 · Truyền tín hiệu",d:"Việc gắn làm thụ thể đổi hình dạng và khởi phát chuỗi chuyển tiếp bên trong tế bào; thác khuếch đại có thể nhân tín hiệu lên nhiều lần, thường qua chất truyền tin thứ hai như cAMP."},
+{t:"5 · Đáp ứng",d:"Tế bào đích thay đổi hoạt động: mở kênh ion, bật enzyme, thay đổi biểu hiện gene, co cơ, tiết chất... Đáp ứng kết thúc khi phân tử tín hiệu rời thụ thể và các phân tử tín hiệu nội bào bị tắt."}],
+jCap:{
+horm:["Tuyến thượng thận tiết epinephrine vào máu","Epinephrine theo dòng máu tới tế bào đích","Gắn vào GPCR trên màng tế bào đích","G protein hoạt hoá → tạo cAMP (chất truyền tin thứ hai)","Đáp ứng: tế bào phân giải glycogen, tim đập nhanh hơn"],
+syn:["Túi synapse phóng thích chất dẫn truyền","Khuếch tán qua khe synapse rất hẹp","Gắn vào thụ thể trên màng tế bào sau synapse","Kênh ion mở - ion tràn vào","Đáp ứng: tế bào sau synapse bị kích thích"],
+ster:["Tế bào nội tiết tiết hormone steroid vào máu","Steroid tới tế bào đích và tự xuyên qua màng (chất kị nước)","Gắn vào thụ thể nằm trong tế bào chất","Phức hợp thụ thể - hormone đi vào nhân, gắn lên DNA","Đáp ứng: bật gene → tổng hợp protein mới"]},
+jSrc:{horm:"Tuyến thượng thận",syn:"Đầu tận cùng neuron",ster:"Tế bào nội tiết"},
+jTgt:"Tế bào đích",jBlood:"Máu",jCleft:"Khe synapse",jNuc:"Nhân",jCamp:"cAMP",
+miH:["Chức năng","Hệ quả","Ví dụ"],
+modeInfo:{
+horm:{fn:"Điều hoà các quá trình của toàn cơ thể theo hướng chậm mà bền: chuyển hoá, sinh trưởng, sinh sản và cân bằng nội môi - vì hormone theo máu đến mọi mô có thụ thể.",cons:"Tác động đồng loạt lên nhiều cơ quan cùng lúc và kéo dài từ vài phút đến vài giờ; hormone bị pha loãng trong máu nên tế bào đích phải khuếch đại tín hiệu rất mạnh.",ex:"Insulin điều hoà đường huyết toàn thân; epinephrine chuẩn bị cơ thể vận động mạnh; thyroxine điều hoà tốc độ chuyển hoá cơ bản."},
+syn:{fn:"Truyền thông tin nhanh và chính xác trong hệ thần kinh: điều khiển phản xạ, vận động, cảm giác và hoạt động của não.",cons:"Đáp ứng xảy ra trong vài mili giây, khu trú đúng một tế bào sau synapse và tắt rất nhanh nhờ chất dẫn truyền bị phân huỷ hoặc tái hấp thu ở khe synapse.",ex:"Acetylcholine ở synapse thần kinh - cơ làm cơ co; glutamate kích thích neuron ở não; dopamine điều hoà vận động và cảm xúc."},
+ster:{fn:"Điều hoà dài hạn thông qua thay đổi biểu hiện gene: phát triển các đặc tính sinh dục, đáp ứng với stress, cân bằng muối - nước.",cons:"Đáp ứng chậm (vài giờ đến vài ngày) vì tế bào phải tổng hợp protein mới, nhưng hiệu quả bền lâu và thay đổi căn bản hoạt động của tế bào.",ex:"Testosterone và oestrogen tạo đặc tính sinh dục; cortisol đáp ứng stress và điều hoà chuyển hoá glucose; aldosterone giữ muối - nước ở thận."}},
+specLigs:[{id:"a",shape:"●",name:"Phân tử tín hiệu A (●)"},{id:"b",shape:"■",name:"Phân tử tín hiệu B (■)"},{id:"c",shape:"▲",name:"Phân tử tín hiệu C (▲)"}],
+specRecs:[{id:"r1",site:"▲",name:"Thụ thể 1 (vị trí gắn ▲)"},{id:"r2",site:"●",name:"Thụ thể 2 (vị trí gắn ●)"},{id:"r3",site:"◆",name:"Thụ thể 3 (vị trí gắn ◆)"}],
+specMatch:{a:"r2",b:"none",c:"r1"},
+specFb0:"Chưa chọn phân tử tín hiệu. Hãy chọn một phân tử tín hiệu trước.",
+specFbPick:"Đã chọn {L}. Giờ bấm vào thụ thể mà em dự đoán.",
+specOk:"Đúng! Hình dạng vị trí gắn khớp với phân tử tín hiệu, thụ thể đổi hình dạng và tín hiệu được khởi phát. Chỉ tế bào có thụ thể khớp mới đáp ứng với phân tử tín hiệu này.",
+specNo:"Chưa khớp: vị trí gắn của thụ thể này không khớp hình dạng với phân tử tín hiệu, nên không gắn được và không có tín hiệu. Hãy thử thụ thể khác.",
+specNone:"Phân tử tín hiệu này không khớp với thụ thể nào ở đây cả - trong cơ thể, nó sẽ đi qua mà không gây đáp ứng ở các tế bào này.",
+catHead:["Nhóm","Nguồn tiết","Đường đi tới đích","Khoảng cách","Ví dụ"],
+catRows:[
+["Hormone","Tế bào / tuyến nội tiết","Theo dòng máu","Xa - khắp cơ thể","Insulin, epinephrine"],
+["Chất dẫn truyền thần kinh","Đầu tận cùng neuron","Khuếch tán qua khe synapse","Rất ngắn (cỡ nanomet)","Acetylcholine, glutamate"],
+["Cytokine","Tế bào miễn dịch và nhiều tế bào khác","Dịch mô hoặc dòng máu","Tại chỗ hoặc xa","Interleukin"],
+["Ion Ca²⁺","Được giải phóng trong tế bào (từ lưới nội chất / ngoài tế bào)","Ngay trong tế bào chất của chính tế bào đó","Trong một tế bào","Ca²⁺ gây co cơ, gây phóng thích chất dẫn truyền"]],
+ligDef:"Thuật ngữ cần nhớ - Phân tử tín hiệu: phân tử tín hiệu gắn vào vị trí gắn đặc hiệu trên thụ thể.",
+hormTiles:[
+{t:"Amin",d:"Phân tử nhỏ dẫn xuất từ amino acid. Ví dụ: epinephrine, thyroxine. Ưa nước - gắn vào thụ thể trên màng."},
+{t:"Peptide / protein",d:"Chuỗi amino acid dài ngắn khác nhau. Ví dụ: insulin, glucagon. Ưa nước - không qua được màng, gắn vào thụ thể xuyên màng."},
+{t:"Steroid",d:"Cấu trúc vòng dẫn xuất từ cholesterol. Ví dụ: testosterone, oestrogen, cortisol. Kị nước - xuyên qua màng, gắn vào thụ thể nội bào."}],
+ntTiles:[
+{t:"Amino acid",d:"Ví dụ: glutamate (kích thích), GABA (ức chế) - các chất dẫn truyền phổ biến nhất ở não."},
+{t:"Peptide",d:"Chuỗi amino acid ngắn. Ví dụ: endorphin, chất P."},
+{t:"Amin",d:"Ví dụ: serotonin, dopamine, acetylcholine thuộc nhóm có nitrogen - nhiều thuốc tác động lên hệ này."},
+{t:"Khí NO",d:"Nitric oxide: khí hoà tan, khuếch tán thẳng qua màng, tác động rất ngắn và tại chỗ."}],
+raceL:{synT:"Thời gian di chuyển: ~1 mili giây",horT:"Thời gian di chuyển: ≈ {m} phút",syn:"Khe synapse (~20 nm)",hor:"Theo máu tới tế bào đích ở xa",idle:"Bấm Chạy cả hai để so sánh tốc độ và phạm vi.",synDone:"Chất dẫn truyền: đã tới đích - nhanh, khu trú đúng một tế bào.",mid:"Hormone vẫn đang theo dòng máu... và bị pha loãng dần.",done:"Hormone: đã tới đích - chậm hơn nhiều, nhưng cùng lúc đến được vô số tế bào đích trong cơ thể."},
+rxInfo0:"Bấm vào từng thành phần trong hình để xem giải thích.",
+rxHover:{mem:["Màng tế bào","Lớp kép phospholipid: rào chắn chọn lọc - chỉ phân tử nhỏ, kị nước mới khuếch tán qua được."],ligW:["Phân tử tín hiệu ưa nước","Không qua được lớp kép lipid, nên chỉ gắn được vào thụ thể xuyên màng ở mặt ngoài tế bào."],ligS:["Phân tử tín hiệu kị nước","Khuếch tán thẳng qua màng vào trong tế bào, tới gắn vào thụ thể nội bào."],tm:["Thụ thể xuyên màng","Nằm trong màng: vị trí gắn ở mặt ngoài nhận phân tử tín hiệu ưa nước, phần bên trong khởi phát đường truyền tín hiệu - phân tử tín hiệu không cần đi vào tế bào."],ic:["Thụ thể nội bào","Nằm trong tế bào chất hoặc trong nhân; chỉ được kích hoạt khi phân tử tín hiệu kị nước đã vào được trong tế bào."],cyto:["Tế bào chất","Môi trường bên trong tế bào, nơi thụ thể nội bào hoạt động và đáp ứng của tế bào diễn ra."],sm:["Chất truyền tin thứ hai","Được tạo ra bên trong tế bào sau khi thụ thể xuyên màng được kích hoạt; khuếch tán trong tế bào chất và chuyển tiếp tín hiệu."],nuc:["Nhân tế bào","Chứa DNA; phức hợp phân tử tín hiệu - thụ thể nội bào đi vào nhân và bật hoặc tắt các gen đích."]},
+rxParts:{
+tmT:"THỤ THỂ XUYÊN MÀNG",icT:"THỤ THỂ NỘI BÀO",mem:"MÀNG TẾ BÀO",cyt:"Tế bào chất",nuc:"Nhân",dna:"DNA",
+tmL:"Phân tử tín hiệu ưa nước (insulin, epinephrine): không qua được lớp lipid kép nên chỉ gắn vào thụ thể trên màng.",
+icL:"Phân tử tín hiệu kị nước: tự khuếch tán xuyên qua màng để vào trong tế bào.",
+tmR:"Thụ thể xuyên màng: phần nằm trong màng giàu amino acid kị nước; hai đầu thò ra ngoài và vào trong tế bào giàu amino acid ưa nước.",
+icR:"Thụ thể nội bào: nằm trong tế bào chất (hoặc nhân), bề mặt giàu amino acid ưa nước vì môi trường quanh nó là nước; sau khi gắn phân tử tín hiệu, phức hợp đi vào nhân và đổi biểu hiện gene."},
+cascStages:["Phân tử tín hiệu","Thụ thể","G protein","cAMP","Enzyme","Sản phẩm"],
+cascDefs:[
+{t:"Chất truyền tin thứ nhất",d:"Chính là phân tử tín hiệu từ bên ngoài tế bào - 'tin' đầu tiên đến từ tế bào khác."},
+{t:"Chất truyền tin thứ hai",d:"Phân tử nhỏ nội bào như cAMP, được tạo ra sau khi thụ thể được hoạt hoá, chuyển tiếp và khuếch đại tín hiệu bên trong tế bào."},
+{t:"Chuyển tiếp tín hiệu",d:"Chuỗi biến đổi từ lúc phân tử tín hiệu gắn vào thụ thể đến khi tế bào đáp ứng."},
+{t:"Thác tín hiệu",d:"Chuỗi các phân tử hoạt hoá lẫn nhau nối tiếp; mỗi tầng nhân số lượng lên nên đáp ứng cuối rất lớn."}],
+cascNote:"1 phân tử tín hiệu → đáp ứng cuối lớn gấp hàng chục lần: đó là lí do một lượng hormone cực nhỏ trong máu vẫn điều khiển được cả cơ thể.",
+gpL:{lig:"Phân tử tín hiệu",rec:"GPCR (7 đoạn xuyên màng)",gp:"G protein",al:"α + GTP",eff:"Phân tử hiệu ứng",camp:"cAMP",steps:["Trạng thái nghỉ: G protein mang GDP, chưa hoạt động.","Phân tử tín hiệu gắn vào GPCR - thụ thể đổi hình dạng.","GPCR hoạt hoá G protein: tiểu đơn vị α nhả GDP, nhận GTP.","Tiểu đơn vị α mang GTP tách ra, trượt dọc màng tới phân tử hiệu ứng và bật nó.","Phân tử hiệu ứng tạo chất truyền tin thứ hai (cAMP) - tín hiệu được khuếch đại. Khi α thuỷ phân GTP → GDP, mọi thứ tắt và tái hợp."]},
+epiSteps:[
+{t:"Bước 1 · Tiết ra",d:"Tuyến thượng thận (phần tuỷ) tiết epinephrine vào máu khi cơ thể căng thẳng hoặc cần vận động mạnh."},
+{t:"Bước 2 · Gắn vào thụ thể",d:"Epinephrine theo máu tới tế bào đích (gan, cơ, tim, phế quản...) và gắn vào thụ thể liên kết G protein trên màng - nó ưa nước nên không cần vào trong tế bào."},
+{t:"Bước 3 · G protein và cAMP",d:"G protein được hoạt hoá (GDP → GTP), bật enzyme adenylyl cyclase; enzyme này biến ATP thành cAMP - chất truyền tin thứ hai - với số lượng lớn."},
+{t:"Bước 4 · Thác enzyme",d:"cAMP hoạt hoá protein kinase A, kinase này hoạt hoá tiếp các enzyme khác theo thác khuếch đại."},
+{t:"Bước 5 · Đáp ứng ở tế bào gan",d:"Enzyme cuối phân giải glycogen thành glucose và phóng thích vào máu - cung cấp nhiên liệu ngay cho cơ bắp đang vận động."}],
+epiFx:[
+{t:"Cơ xương",d:"Mạch máu trong cơ giãn, tăng lượng máu và oxy tới cơ; cơ sẵn sàng co mạnh."},
+{t:"Gan",d:"Phân giải glycogen → glucose vào máu, tăng đường huyết để cấp nhiên liệu."},
+{t:"Phế quản và tiểu phế quản",d:"Giãn đường dẫn khí, thông khí tăng - hít thở sâu và nhanh hơn."},
+{t:"Tim",d:"Nhịp tim và lực co tăng → cung lượng tim tăng, máu tuần hoàn nhanh hơn."},
+{t:"Mạch máu",d:"Giãn mạch ở cơ xương và tim; co mạch ở da và ruột để ưu tiên máu cho cơ."},
+{t:"Đồng tử và mồ hôi",d:"Đồng tử giãn để nhận nhiều ánh sáng hơn; tăng tiết mồ hôi để giải nhiệt."}],
+insL:{blood:"MÁU (đường huyết cao)",cell:"Tế bào cơ",rec:"Thụ thể insulin",ves:"Túi chứa protein vận chuyển glucose",glu:"Glucose",steps:["Trạng thái đầu: glucose trong máu cao nhưng ít protein vận chuyển glucose trên màng, tế bào hấp thu chậm.","Insulin từ tuyến tuỵ theo máu tới và gắn vào thụ thể insulin trên màng.","Thụ thể tự phosphoryl hoá các gốc tyrosine ở phần trong tế bào (hoạt tính tyrosine kinase).","Chuỗi truyền tín hiệu ra lệnh cho các túi chứa protein vận chuyển glucose di chuyển ra màng.","Túi hợp nhất với màng - protein vận chuyển glucose xuất hiện trên bề mặt, glucose tràn vào tế bào, đường huyết giảm."]},
+melL:{scn:"SCN nhận ánh sáng",pin:"Tuyến tùng tiết melatonin",low:"Melatonin thấp - tỉnh táo",mid:"Melatonin tăng - buồn ngủ",high:"Melatonin cao - ngủ sâu",eye:"Mắt"}
+}
+},
+
+en:{
+title:"Chemical signalling",tab1:"1 · Animated diagram",tab2:"2 · Receptors & signalling molecules",tab3:"3 · Range & receptor types",tab4:"4 · Transduction & GPCRs",tab5:"5 · Model mechanisms",tab6:"6 · Practice test",
+s1h:"Animated diagram - The journey of a chemical signal",
+s1p:"Every chemical signal follows the same journey: it is released from a source cell, travels to a target cell, binds a specific receptor and sets off a chain of changes inside the target cell. Choose one of the three signalling types below and watch how the substance moves between places, where it binds, and what it changes inside the target cell.",
+mHorm:"Hormone carried by the blood",mSyn:"Neurotransmitter across a synapse",mSter:"Steroid hormone into the cell",
+s1bh:"Five steps of a signalling journey",s1bp:"Click each step to see the core content.",
+s2ah:"C2.1.1 HL - Receptors: proteins with specific binding sites",
+s2ap:"A receptor is a protein with a binding site whose shape matches one particular signalling molecule - that molecule is called its ligand. Pick a ligand, then click the receptor you predict it will bind; only when the shapes match is a signal initiated.",
+specPickL:"Pick a ligand:",specPickR:"Choose a receptor",
+s2anote:"Binding is reversible: the ligand binds and later leaves, so the signal switches off when the ligand disappears.",
+s2bh:"C2.1.3 HL - Four groups of signalling molecules in animals",
+s2ch:"C2.1.4 HL - Chemical diversity of hormones and neurotransmitters",
+s2cp:"All signalling molecules share the same properties: they are released by one cell, travel to a target cell, bind a specific receptor and cause a response - even though their chemistry differs greatly.",
+s2ch1:"Hormones - three chemical groups",s2ch2:"Neurotransmitters - four chemical groups",
+s3ah:"C2.1.5 HL - Localized and distant effects",
+s3ap:"A neurotransmitter only has to cross the extremely narrow synaptic cleft, so its effect is fast and localized; a hormone must travel in the blood around the whole body, so it is slower and gets diluted, but it can reach very many target cells at once. Press Run and compare the two journeys.",
+bRaceGo:"▶ Run both",bRaceReset:"↺ Reset",
+s3bh:"C2.1.6 HL - Transmembrane and intracellular receptors",
+s3bp:"Click each component in the diagram to compare the two receptor types: position, the nature of the ligand, and the distribution of hydrophilic / hydrophobic amino acids on the receptor.",
+s4ah:"C2.1.7 HL - Initiation of signal transduction: the amplification cascade",
+s4ap:"When a ligand binds its receptor, the signal is relayed through a chain of molecules inside the cell (transduction). Each molecule at one level activates many molecules at the next, so a single ligand can produce a very large response - the signalling cascade. Press Run and watch the numbers multiply.",
+bCasc:"▶ Run the amplification cascade",
+s4bh:"C2.1.9 HL - G protein-coupled receptors (GPCRs)",
+s4bp:"A GPCR is a transmembrane receptor with 7 alpha-helical segments crossing the membrane. When a ligand binds, the GPCR changes shape and activates a G protein at the inner surface: the alpha subunit releases GDP, takes up GTP, separates and switches on an effector molecule. When the alpha subunit hydrolyses GTP back to GDP, the signal switches off. Press Bind ligand to run the mechanism.",
+bGpGo:"▶ Bind ligand to the GPCR",bGpReset:"↺ Reset",
+s4bnote:"Example GPCR ligands: epinephrine, glucagon, serotonin, many peptide hormones and neurotransmitters. Humans have hundreds of different GPCRs.",
+s5ah:"C2.1.10 HL + C3.1.12 SL - Epinephrine: the 'fight or flight' signal",
+s5ap:"Epinephrine (adrenaline) is secreted by the adrenal glands when the body needs vigorous activity. It binds G protein-coupled receptors on many cell types and uses cAMP as second messenger. Step through the mechanism, then survey its effects on the whole body.",
+bPrev:"← Previous step",bNext:"Next step →",bReset:"↺ Reset",s5afxh:"Effects of epinephrine on the body",
+s5anos:"NOS corner: 'adrenaline' (Latin: ad = at, ren = kidney) and 'epinephrine' (ancient Greek: epi = above, nephros = kidney) both name the hormone of the gland sitting on the kidney - the two terms persisting in different parts of the world are an example of international cooperation in science.",
+s5bh:"C2.1.11 HL - Insulin: a receptor with tyrosine kinase activity",
+s5bp:"Insulin is secreted by pancreas cells when blood glucose is high. The insulin receptor is a transmembrane receptor with kinase activity: when insulin binds, tyrosine residues on the intracellular part are phosphorylated, starting a reaction chain whose end point is moving vesicles containing glucose transporters to the plasma membrane so the cell can take up glucose. Step through the steps to see the mechanism model.",
+bInsGo:"▶ Secrete insulin",bInsReset:"↺ Reset",
+s5ch:"C3.1.11 SL - Melatonin and the day-night circadian rhythm",
+s5cp:"The suprachiasmatic nuclei (SCN) in the hypothalamus receive light information from the eyes and control the pineal gland: in darkness the pineal gland secretes melatonin, causing sleepiness; light suppresses melatonin. Drag the hour slider and watch all three links change together.",
+melHourL:"🕐 Hour of the day",
+dyn:{
+legend:[["#e4572e","Ligand (signalling molecule)"],["#7c3aed","Receptor"],["#2563eb","Cell membrane"],["#f59e0b","Second messenger (cAMP)"],["#16a34a","Cell response"]],
+jSteps:[
+{t:"1 · Release",d:"The source cell releases the signalling molecule: an endocrine gland secretes a hormone into the blood, a neuron terminal secretes a neurotransmitter into the synaptic cleft."},
+{t:"2 · Travel",d:"The signal molecule travels to the target cell: far around the body in the blood, across the extremely short synaptic cleft by diffusion, or through tissue fluid to a neighbouring cell."},
+{t:"3 · Binding to a receptor",d:"Only a cell whose receptor has a binding site matching the ligand's shape can 'hear' the signal - this is the specificity of chemical signalling."},
+{t:"4 · Transduction",d:"Binding changes the receptor's shape and sets off a relay chain inside the cell; an amplification cascade can multiply the signal many times, often via a second messenger such as cAMP."},
+{t:"5 · Response",d:"The target cell changes its activity: ion channels open, enzymes switch on, gene expression changes, muscle contracts, substances are secreted... The response ends when the ligand leaves the receptor and the intracellular signal molecules are switched off."}],
+jCap:{
+horm:["The adrenal gland secretes epinephrine into the blood","Epinephrine travels in the blood to the target cell","It binds a GPCR on the target cell membrane","The G protein is activated → cAMP is made (second messenger)","Response: the cell breaks down glycogen; the heart beats faster"],
+syn:["Synaptic vesicles release the neurotransmitter","Diffusion across the very narrow synaptic cleft","Binding to receptors on the post-synaptic membrane","Ion channels open - ions flood in","Response: the post-synaptic cell is stimulated"],
+ster:["An endocrine cell secretes a steroid hormone into the blood","The steroid reaches the target cell and passes straight through the membrane (hydrophobic)","It binds a receptor in the cytoplasm","The receptor-hormone complex enters the nucleus and binds DNA","Response: genes switch on → new proteins are made"]},
+jSrc:{horm:"Adrenal gland",syn:"Neuron terminal",ster:"Endocrine cell"},
+jTgt:"Target cell",jBlood:"Blood",jCleft:"Synaptic cleft",jNuc:"Nucleus",jCamp:"cAMP",
+miH:["Function","Consequences","Examples"],
+modeInfo:{
+horm:{fn:"Regulates whole-body processes in a slow but lasting way: metabolism, growth, reproduction and homeostasis - because the hormone travels in the blood to every tissue that has its receptor.",cons:"Acts on many organs at the same time and lasts from minutes to hours; the hormone is diluted in the blood, so target cells must amplify the signal strongly.",ex:"Insulin regulates blood glucose body-wide; epinephrine prepares the body for vigorous activity; thyroxine sets the basal metabolic rate."},
+syn:{fn:"Fast, precise information transfer in the nervous system: controls reflexes, movement, sensation and brain activity.",cons:"The response occurs within milliseconds, is localized to exactly one post-synaptic cell, and switches off very fast because the transmitter is broken down or reabsorbed in the cleft.",ex:"Acetylcholine at the nerve-muscle synapse makes muscle contract; glutamate excites neurons in the brain; dopamine regulates movement and mood."},
+ster:{fn:"Long-term regulation through changes in gene expression: development of sexual characteristics, the stress response, and salt-water balance.",cons:"The response is slow (hours to days) because the cell must synthesize new proteins, but the effect is lasting and fundamentally changes the cell's activity.",ex:"Testosterone and oestrogen produce sexual characteristics; cortisol handles stress and glucose metabolism; aldosterone retains salt and water in the kidney."}},
+specLigs:[{id:"a",shape:"●",name:"Ligand A (●)"},{id:"b",shape:"■",name:"Ligand B (■)"},{id:"c",shape:"▲",name:"Ligand C (▲)"}],
+specRecs:[{id:"r1",site:"▲",name:"Receptor 1 (binding site ▲)"},{id:"r2",site:"●",name:"Receptor 2 (binding site ●)"},{id:"r3",site:"◆",name:"Receptor 3 (binding site ◆)"}],
+specMatch:{a:"r2",b:"none",c:"r1"},
+specFb0:"No ligand chosen yet. Pick a ligand first.",
+specFbPick:"{L} chosen. Now click the receptor you predict.",
+specOk:"Correct! The binding site shape matches the ligand, the receptor changes shape and the signal is initiated. Only cells with the matching receptor respond to this ligand.",
+specNo:"No match: this receptor's binding site does not fit the ligand's shape, so it cannot bind and there is no signal. Try another receptor.",
+specNone:"This ligand matches none of the receptors here - in the body it would pass these cells by without causing any response.",
+catHead:["Group","Released from","Route to the target","Distance","Examples"],
+catRows:[
+["Hormones","Endocrine cells / glands","Carried in the blood","Long - whole body","Insulin, epinephrine"],
+["Neurotransmitters","Neuron terminals","Diffusion across the synaptic cleft","Very short (nanometres)","Acetylcholine, glutamate"],
+["Cytokines","Immune cells and many other cells","Tissue fluid or blood","Local or long","Interleukins"],
+["Calcium ions Ca²⁺","Released inside the cell (from endoplasmic reticulum / outside the cell)","Within the cytoplasm of that same cell","Inside one cell","Ca²⁺ triggers muscle contraction and neurotransmitter release"]],
+ligDef:"Key term - Ligand: the signalling molecule that binds to a specific binding site on a receptor.",
+hormTiles:[
+{t:"Amines",d:"Small molecules derived from amino acids. Examples: epinephrine, thyroxine. Hydrophilic - they bind receptors on the membrane."},
+{t:"Peptides / proteins",d:"Chains of amino acids of varying length. Examples: insulin, glucagon. Hydrophilic - they cannot cross the membrane and bind transmembrane receptors."},
+{t:"Steroids",d:"Ring structures derived from cholesterol. Examples: testosterone, oestrogen, cortisol. Hydrophobic - they cross the membrane and bind intracellular receptors."}],
+ntTiles:[
+{t:"Amino acids",d:"Examples: glutamate (excitatory), GABA (inhibitory) - the most common neurotransmitters in the brain."},
+{t:"Peptides",d:"Short amino acid chains. Examples: endorphins, substance P."},
+{t:"Amines",d:"Examples: serotonin, dopamine; acetylcholine is a nitrogen-containing transmitter too - many medicines act on these systems."},
+{t:"Nitric oxide (gas)",d:"A dissolved gas that diffuses straight through membranes; its action is very brief and local."}],
+raceL:{synT:"Travel time: ~1 millisecond",horT:"Travel time: ≈ {m} minutes",syn:"Synaptic cleft (~20 nm)",hor:"By blood to a distant target cell",idle:"Press Run both to compare speed and range.",synDone:"Neurotransmitter: arrived - fast, and localized to exactly one cell.",mid:"The hormone is still travelling in the blood... and being diluted.",done:"Hormone: arrived - much slower, but it reaches countless target cells all over the body at the same time."},
+rxInfo0:"Click each component in the diagram to read its explanation.",
+rxHover:{mem:["Cell membrane","The phospholipid bilayer: a selective barrier - only small, hydrophobic molecules can diffuse across it."],ligW:["Hydrophilic signalling molecule","Cannot cross the lipid bilayer, so it can only bind a transmembrane receptor at the outer surface."],ligS:["Hydrophobic signalling molecule (steroid)","Diffuses straight through the membrane into the cell, to bind an intracellular receptor."],tm:["Transmembrane receptor","Sits in the membrane: its outer binding site receives hydrophilic signalling molecules and its inner part starts the signal pathway - the signalling molecule never enters the cell."],ic:["Intracellular receptor","Located in the cytoplasm or nucleus; activated only once a hydrophobic signalling molecule has entered the cell."],cyto:["Cytoplasm","The cell's interior, where intracellular receptors act and the cell's response takes place."],sm:["Second messenger","Made inside the cell after a transmembrane receptor is activated; diffuses through the cytoplasm and relays the signal."],nuc:["Nucleus","Contains the DNA; the signalling molecule - intracellular receptor complex enters the nucleus and switches target genes on or off."]},
+rxParts:{
+tmT:"TRANSMEMBRANE RECEPTOR",icT:"INTRACELLULAR RECEPTOR",mem:"PLASMA MEMBRANE",cyt:"Cytoplasm",nuc:"Nucleus",dna:"DNA",
+tmL:"Hydrophilic ligand (insulin, epinephrine): it cannot cross the lipid bilayer, so it only binds a receptor on the membrane.",
+icL:"Hydrophobic ligand (steroid): it diffuses straight through the membrane into the cell.",
+tmR:"Transmembrane receptor: the part inside the membrane is rich in hydrophobic amino acids; the two ends sticking out of and into the cell are rich in hydrophilic amino acids.",
+icR:"Intracellular receptor: located in the cytoplasm (or nucleus), its surface is rich in hydrophilic amino acids because its surroundings are watery; after binding its ligand, the complex enters the nucleus and changes gene expression."},
+cascStages:["Ligand","Receptor","G protein","cAMP","Enzymes","Products"],
+cascDefs:[
+{t:"First messenger",d:"The ligand itself, arriving from outside the cell - the first 'message' from another cell."},
+{t:"Second messenger",d:"A small intracellular molecule such as cAMP, produced after the receptor is activated, which relays and amplifies the signal inside the cell."},
+{t:"Transduction",d:"The whole chain of changes from ligand binding at the receptor to the cell's response."},
+{t:"Signalling cascade",d:"A chain of molecules activating each other in sequence; each level multiplies the number, so the final response is huge."}],
+cascNote:"1 ligand → a final response tens of times larger: that is why a tiny amount of hormone in the blood can control the whole body.",
+gpL:{lig:"Ligand",rec:"GPCR (7 membrane spans)",gp:"G protein",al:"α + GTP",eff:"Effector molecule",camp:"cAMP",steps:["Resting state: the G protein carries GDP and is inactive.","A ligand binds the GPCR - the receptor changes shape.","The GPCR activates the G protein: the alpha subunit releases GDP and takes up GTP.","The alpha subunit with GTP separates and slides along the membrane to the effector molecule and switches it on.","The effector makes a second messenger (cAMP) - the signal is amplified. When alpha hydrolyses GTP → GDP, everything switches off and reassembles."]},
+epiSteps:[
+{t:"Step 1 · Release",d:"The adrenal glands (medulla) secrete epinephrine into the blood when the body is stressed or needs vigorous activity."},
+{t:"Step 2 · Binding the receptor",d:"Epinephrine travels in the blood to target cells (liver, muscle, heart, bronchioles...) and binds a G protein-coupled receptor on the membrane - being hydrophilic, it does not need to enter the cell."},
+{t:"Step 3 · G protein and cAMP",d:"The G protein is activated (GDP → GTP) and switches on the enzyme adenylyl cyclase; this enzyme converts ATP into large amounts of cAMP - the second messenger."},
+{t:"Step 4 · Enzyme cascade",d:"cAMP activates protein kinase A, which activates further enzymes in an amplification cascade."},
+{t:"Step 5 · Response in a liver cell",d:"The final enzyme breaks glycogen down into glucose and releases it into the blood - instant fuel for working muscles."}],
+epiFx:[
+{t:"Skeletal muscles",d:"Blood vessels in muscle dilate, increasing blood and oxygen delivery; muscles are ready to contract strongly."},
+{t:"Liver",d:"Glycogen is broken down → glucose enters the blood, raising blood glucose to supply fuel."},
+{t:"Bronchi and bronchioles",d:"Airways dilate, ventilation increases - breathing becomes deeper and faster."},
+{t:"Heart",d:"Heart rate and contraction force increase → cardiac output rises and blood circulates faster."},
+{t:"Blood vessels",d:"Vessels dilate in skeletal muscle and the heart; vessels constrict in skin and gut to prioritize blood for muscle."},
+{t:"Pupils and sweat",d:"Pupils dilate to take in more light; sweat secretion increases for cooling."}],
+insL:{blood:"BLOOD (high glucose)",cell:"Muscle cell",rec:"Insulin receptor",ves:"Vesicle with glucose transporters",glu:"Glucose",steps:["Start: blood glucose is high but there are few glucose transporters in the membrane, so the cell takes up glucose slowly.","Insulin from the pancreas arrives in the blood and binds the insulin receptor on the membrane.","The receptor phosphorylates tyrosine residues on its intracellular part (tyrosine kinase activity).","The signalling chain orders vesicles containing glucose transporters to move to the membrane.","The vesicles fuse with the membrane - glucose transporters appear on the surface, glucose floods into the cell, and blood glucose falls."]},
+melL:{scn:"SCN senses light",pin:"Pineal gland secretes melatonin",low:"Low melatonin - awake",mid:"Rising melatonin - sleepy",high:"High melatonin - deep sleep",eye:"Eye"}
+}
+}
+};
+function D(){return I18N[LANG];}
+function applyStatic(){
+  document.querySelectorAll('[data-t]').forEach(function(el){var k=el.getAttribute('data-t');if(D()[k]!==undefined)el.textContent=D()[k];});
+  document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.lang===LANG);});
+  document.documentElement.lang=LANG;
+}
+
+/* ---------- Tab 1: legend + step chips ---------- */
+var JSEL=0;
+function buildChips(){
+  var box=document.getElementById('jChips');
+  box.innerHTML=D().dyn.jSteps.map(function(st,i){
+    return '<button type="button" class="btn secondary stepchip'+(i===JSEL?' on':'')+'" data-j="'+i+'">'+st.t+'</button>';
+  }).join('');
+  document.getElementById('jInfo').textContent=D().dyn.jSteps[JSEL].d;
+}
+document.getElementById('jChips').addEventListener('click',function(e){
+  var b=e.target.closest('[data-j]'); if(!b)return; JSEL=+b.dataset.j; buildChips();
+});
+/* ---------- Tab 2: receptor-ligand specificity ---------- */
+var SPECL=null, SPECR=null;
+function buildSpec(){
+  var dy=D().dyn;
+  document.getElementById('specLigs').innerHTML=dy.specLigs.map(function(l){
+    return '<button type="button" class="btn'+(SPECL===l.id?' on':' secondary')+'" data-lig="'+l.id+'">'+l.name+'</button>';
+  }).join('');
+  document.getElementById('specRecs').innerHTML=dy.specRecs.map(function(r){
+    return '<button type="button" class="btn'+(SPECR===r.id?' on':' secondary')+'" data-rec="'+r.id+'">'+r.name+'</button>';
+  }).join('');
+  if(!SPECL)document.getElementById('specFb').textContent=dy.specFb0;
+}
+document.getElementById('specLigs').addEventListener('click',function(e){
+  var b=e.target.closest('[data-lig]'); if(!b)return; SPECL=b.dataset.lig; SPECR=null; buildSpec();
+  if(window.specSimPick)specSimPick(SPECL);
+  var dy=D().dyn, nm=dy.specLigs.filter(function(x){return x.id===SPECL;})[0].name;
+  document.getElementById('specFb').textContent=dy.specFbPick.replace('{L}',nm);
+});
+document.getElementById('specRecs').addEventListener('click',function(e){
+  var b=e.target.closest('[data-rec]'); if(!b)return; var dy=D().dyn; SPECR=b.dataset.rec; buildSpec();
+  if(!SPECL){document.getElementById('specFb').textContent=dy.specFb0;return;}
+  var want=dy.specMatch[SPECL], ok=(want!=='none'&&b.dataset.rec===want);
+  if(want==='none')document.getElementById('specFb').textContent=dy.specNone;
+  else if(ok)document.getElementById('specFb').textContent=dy.specOk;
+  else document.getElementById('specFb').textContent=dy.specNo;
+  if(window.specSimStart)specSimStart(SPECL,b.dataset.rec,ok);
+});
+/* ---------- Tab 2: categories table + chemistry tiles ---------- */
+function buildCat(){
+  var dy=D().dyn, h='<div style="overflow-x:auto"><table><tr>'+dy.catHead.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  dy.catRows.forEach(function(r){h+='<tr>'+r.map(function(c,i){return i===0?'<td><b>'+c+'</b></td>':'<td>'+c+'</td>';}).join('')+'</tr>';});
+  document.getElementById('catTable').innerHTML=h+'</table></div>';
+}
+function buildChem(){
+  var dy=D().dyn;
+  document.getElementById('hormTiles').innerHTML=dy.hormTiles.map(function(t){return '<div class="mtile"><b>'+t.t+'</b>'+t.d+'</div>';}).join('');
+  document.getElementById('ntTiles').innerHTML=dy.ntTiles.map(function(t){return '<div class="mtile"><b>'+t.t+'</b>'+t.d+'</div>';}).join('');
+}
+/* ---------- Tab 3: receptor comparison SVG ---------- */
+var RXSEL='tmL';
+function buildRx(){
+  var P=D().dyn.rxParts;
+  function zone(x,y,w,h,key){return '<g data-rx="'+key+'" data-h="'+(key.indexOf('tm')===0?'tm':'ic')+'" style="cursor:pointer"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="rgba(37,99,235,0.001)"/></g>';}
+  var s='';
+  s+='<text x="270" y="30" text-anchor="middle" font-weight="800" font-size="16" fill="#0f172a">'+P.tmT+'</text>';
+  s+='<text x="810" y="30" text-anchor="middle" font-weight="800" font-size="16" fill="#0f172a">'+P.icT+'</text>';
+  // left panel: transmembrane receptor
+  s+='<rect x="60" y="120" width="420" height="26" fill="#93c5fd"/><rect x="60" y="146" width="420" height="26" fill="#fcd34d"/>';
+  s+='<rect data-h="mem" x="60" y="116" width="420" height="60" fill="transparent"/><rect data-h="cyto" x="60" y="176" width="420" height="150" fill="transparent"/>';
+  s+='<text x="64" y="192" font-size="12.5" fill="#475569">'+P.mem+'</text>';
+  s+='<circle data-h="ligW" cx="270" cy="78" r="17" fill="#e4572e"/>';
+  s+='<path d="M235 146 L235 120 L255 120 L255 172 L275 172 L275 120 L295 120 L295 172 L315 172 L315 120 L335 120 L335 146" fill="none" stroke="#7c3aed" stroke-width="13"/>';
+  s+='<circle data-h="sm" cx="270" cy="215" r="10" fill="#f59e0b"/>';
+  s+='<text x="270" y="255" text-anchor="middle" font-size="12.5" fill="#475569">'+P.cyt+'</text>';
+  s+=zone(200,55,140,50,'tmL')+zone(215,105,190,90,'tmR');
+  // right panel: intracellular receptor
+  s+='<rect x="600" y="120" width="420" height="26" fill="#93c5fd"/><rect x="600" y="146" width="420" height="26" fill="#fcd34d"/>';
+  s+='<rect data-h="mem" x="600" y="116" width="420" height="60" fill="transparent"/><rect data-h="cyto" x="600" y="176" width="420" height="150" fill="transparent"/>';
+  s+='<text x="616" y="192" font-size="12.5" fill="#475569">'+P.mem+'</text>';
+  s+='<path d="M700 79 L709 88 L700 97 L691 88 Z" fill="#e11d48"/><path d="M742 119 L751 128 L742 137 L733 128 Z" fill="#e11d48"/><path d="M782 159 L791 168 L782 177 L773 168 Z" fill="#e11d48"/>';
+  s+='<rect x="770" y="196" width="86" height="40" rx="18" fill="#7c3aed"/><path d="M813 209 L820 216 L813 223 L806 216 Z" fill="#fff"/>';
+  s+='<ellipse cx="945" cy="235" rx="62" ry="48" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>';
+  s+='<text x="945" y="230" text-anchor="middle" font-size="12.5" fill="#0f172a">'+P.nuc+'</text>';
+  s+='<text x="945" y="250" text-anchor="middle" font-size="12.5" fill="#0f172a">'+P.dna+'</text>';
+  s+='<text x="810" y="290" text-anchor="middle" font-size="12.5" fill="#475569">'+P.cyt+'</text>';
+  s+=zone(660,70,180,120,'icL')+zone(745,185,240,110,'icR');
+  s+='<ellipse data-h="nuc" cx="945" cy="235" rx="62" ry="48" fill="transparent"/>';
+  s+='<circle data-h="ligW" cx="270" cy="78" r="20" fill="transparent"/>';
+  s+='<circle data-h="ligS" cx="700" cy="88" r="12" fill="transparent"/><circle data-h="ligS" cx="742" cy="128" r="12" fill="transparent"/><circle data-h="ligS" cx="782" cy="168" r="12" fill="transparent"/>';
+  document.getElementById('rxSvg').innerHTML=s;
+  document.getElementById('rxInfo').textContent=P[RXSEL]||D().dyn.rxInfo0;
+}
+var rxSvgEl=document.getElementById('rxSvg'), rxTip=document.getElementById('rxTip');
+rxSvgEl.addEventListener('mousemove',function(e){
+  var t=(e.target&&e.target.closest)?e.target.closest('[data-h]'):null;
+  var H=D().dyn.rxHover;
+  if(!t||!H||!H[t.getAttribute('data-h')]){rxTip.style.display='none';return;}
+  var it=H[t.getAttribute('data-h')];
+  rxTip.innerHTML='<b>'+it[0]+'</b><br>'+it[1];
+  var wrap=rxSvgEl.parentElement.getBoundingClientRect();
+  var x=e.clientX-wrap.left+16, y=e.clientY-wrap.top+16;
+  if(x>wrap.width-272)x=e.clientX-wrap.left-268;
+  rxTip.style.left=x+'px'; rxTip.style.top=y+'px'; rxTip.style.display='block';
+});
+rxSvgEl.addEventListener('mouseleave',function(){rxTip.style.display='none';});
+document.getElementById('rxSvg').addEventListener('click',function(e){
+  var g=e.target.closest('[data-rx]'); if(!g)return; RXSEL=g.dataset.rx; buildRx();
+});
+/* ---------- Tab 4: cascade stage boxes + definitions ---------- */
+function buildCasc(){
+  var dy=D().dyn;
+  document.getElementById('cascDefs').innerHTML=dy.cascDefs.map(function(t){return '<div class="mtile"><b>'+t.t+'</b>'+t.d+'</div>';}).join('')
+    +'<div class="note" style="grid-column:1/-1">'+dy.cascNote+'</div>';
+}
+/* ---------- Tab 5: epinephrine steps + effects ---------- */
+var EPIIDX=0;
+function buildEpi(){
+  var dy=D().dyn, st=dy.epiSteps[EPIIDX];
+  document.getElementById('epiStep').innerHTML='<b>'+st.t+'</b><br>'+st.d;
+  document.getElementById('epiFx').innerHTML=dy.epiFx.map(function(t){return '<div class="fx"><b>'+t.t+'</b>'+t.d+'</div>';}).join('');
+}
+document.getElementById('bEpiPrev').addEventListener('click',function(){EPIIDX=Math.max(0,EPIIDX-1);buildEpi();});
+document.getElementById('bEpiNext').addEventListener('click',function(){EPIIDX=Math.min(D().dyn.epiSteps.length-1,EPIIDX+1);buildEpi();});
+document.getElementById('bEpiReset').addEventListener('click',function(){EPIIDX=0;buildEpi();});
+/* ---------- render + language + tabs ---------- */
+function buildModeInfo(){
+  var dy=D().dyn, m=(typeof JMODE!=="undefined")?JMODE:"horm", inf=dy.modeInfo[m];
+  document.getElementById('modeInfo').innerHTML=[inf.fn,inf.cons,inf.ex].map(function(t,i){
+    return '<div class="fx"><b>'+dy.miH[i]+'</b>'+t+'</div>';
+  }).join('');
+}
+function renderAll(){
+  applyStatic(); buildChips(); buildModeInfo(); buildSpec(); buildCat(); buildChem(); buildRx(); buildCasc(); buildEpi(); if(window.buildIns)buildIns();
+  if(window.buildExam)buildExam();
+}
+function setLang(l){
+  LANG=l; try{localStorage.setItem('ib_signal_lang',l);}catch(e){}
+  renderAll();
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  var go=function(){setLang(b.dataset.lang);};
+  b.addEventListener('click',go); b.onclick=go;
+});
+document.getElementById('tabbar').addEventListener('click',function(e){
+  var b=e.target.closest('[data-tab]'); if(!b)return;
+  document.querySelectorAll('#tabbar .pill').forEach(function(p){p.classList.toggle('on',p===b);});
+  document.querySelectorAll('section.tab').forEach(function(s){s.classList.toggle('on',s.id===b.dataset.tab);});
+});
+try{renderAll();}catch(e){LANG='vi';}
+</script>
+
+<script>
+"use strict";
+/* ---------- Tab 1: the signal journey, step by step ---------- */
+var JMODE='horm', jT=0, jFx=[], jKey='';
+var cvJ=document.getElementById('cvJourney'), gx=cvJ.getContext('2d');
+['mHorm','mSyn','mSter'].forEach(function(id){
+  document.getElementById(id).addEventListener('click',function(){
+    JMODE=id==='mHorm'?'horm':(id==='mSyn'?'syn':'ster');
+    JSEL=0; buildChips(); buildModeInfo();
+    ['mHorm','mSyn','mSter'].forEach(function(x){document.getElementById(x).classList.toggle('on',x===id);document.getElementById(x).classList.toggle('secondary',x!==id);});
+  });
+});
+function jLegendBox(dy){
+  gx.fillStyle='rgba(255,255,255,0.94)';gx.strokeStyle='#cbd5e1';gx.lineWidth=1.5;
+  gx.beginPath();gx.roundRect(14,12,296,126,10);gx.fill();gx.stroke();
+  gx.font='12px Be Vietnam Pro,Arial';gx.textAlign='left';
+  dy.legend.forEach(function(it,i){
+    gx.fillStyle=it[0];gx.beginPath();gx.arc(32,34+i*22,6,0,6.29);gx.fill();
+    gx.fillStyle='#0f172a';gx.fillText(it[1],46,38+i*22);
+  });
+}
+function jMembrane(x,y0,y1){
+  gx.strokeStyle='#2563eb';gx.lineWidth=5;gx.beginPath();gx.moveTo(x,y0);gx.lineTo(x,y1);gx.stroke();
+  gx.fillStyle='#93c5fd';
+  for(var y=y0+8;y<y1;y+=17){gx.beginPath();gx.arc(x-7,y,6,0,6.29);gx.fill();gx.beginPath();gx.arc(x+7,y,6,0,6.29);gx.fill();}
+}
+function jCell(x,y,w,h,glow){
+  gx.fillStyle=glow?'#dcfce7':'#f1f5f9';gx.strokeStyle='#94a3b8';gx.lineWidth=2;
+  gx.beginPath();gx.roundRect(x,y,w,h,26);gx.fill();gx.stroke();
+}
+function jVessel(dy){
+  gx.fillStyle='#fee2e2';gx.fillRect(150,205,560,70);
+  gx.strokeStyle='#fca5a5';gx.lineWidth=2;gx.strokeRect(150,205,560,70);
+  gx.fillStyle='#475569';gx.font='600 13px Be Vietnam Pro,Arial';gx.fillText(dy.jBlood,400,196);
+  gx.fillStyle='#fda4af';for(var b=0;b<7;b++){var bx=170+((b*97+jT*1.2)%520);gx.beginPath();gx.arc(bx,222+(b%3)*18,5,0,6.29);gx.fill();}
+}
+function jGland(dy){
+  gx.fillStyle='#fde68a';gx.beginPath();gx.ellipse(105,240,58,44,0,0,6.29);gx.fill();gx.strokeStyle='#d97706';gx.lineWidth=2;gx.stroke();
+  gx.fillStyle='#0f172a';gx.font='600 13.5px Be Vietnam Pro,Arial';gx.fillText(dy.jSrc[JMODE],36,178);
+}
+function jLig(x,y,r){gx.fillStyle='#e4572e';gx.beginPath();gx.arc(x,y,r||7,0,6.29);gx.fill();}
+function jTarget(dy,glow){
+  jCell(716,80,330,320,glow); jMembrane(722,90,390);
+  gx.fillStyle='#0f172a';gx.font='600 13.5px Be Vietnam Pro,Arial';gx.fillText(dy.jTgt,760,60);
+  gx.beginPath();gx.ellipse(935,240,72,58,0,0,6.29);gx.fillStyle='#dbeafe';gx.fill();gx.strokeStyle='#2563eb';gx.lineWidth=2;gx.stroke();
+  gx.fillStyle='#0f172a';gx.fillText(dy.jNuc,912,245);
+}
+function jGPCRs(){
+  [170,300].forEach(function(y){gx.strokeStyle='#7c3aed';gx.lineWidth=9;gx.beginPath();gx.moveTo(712,y-24);gx.bezierCurveTo(736,y-24,700,y+24,724,y+24);gx.stroke();});
+}
+function jDraw(){
+  var dy=D().dyn, st=JSEL, pt=jT;
+  var key=JMODE+st; if(key!==jKey){jKey=key;jFx=[];}
+  gx.clearRect(0,0,1080,470);
+  if(JMODE==='syn'){
+    gx.fillStyle='#dbeafe';gx.beginPath();gx.arc(430,195,105,0,6.29);gx.fill();gx.strokeStyle='#2563eb';gx.lineWidth=2;gx.stroke();
+    gx.fillStyle='#0f172a';gx.font='600 13.5px Be Vietnam Pro,Arial';gx.fillText(dy.jSrc.syn,330,66);
+    gx.fillStyle='#475569';gx.fillText(dy.jCleft,478,60);
+    gx.fillStyle='#0f172a';gx.fillText(dy.jTgt,600,60);
+    jCell(560,80,470,320,st===4); jMembrane(566,90,390);
+    [150,240,330].forEach(function(y){gx.fillStyle='#7c3aed';gx.fillRect(556,y-16,20,32);if(st>=3){gx.fillStyle='#f1f5f9';gx.fillRect(563,y-16,6,32);}});
+    if(st===0){gx.fillStyle='#f59e0b';for(var i=0;i<5;i++){var vx=455+((pt*1.1+i*22)%70),vy=160+((i*41)%70);gx.beginPath();gx.arc(vx,vy,8,0,6.29);gx.fill();} jLig(540,180);jLig(543,255);}
+    if(st===1){for(var a=0;a<6;a++)jLig(536+((pt*3.4+a*11)%22),150+a*36);}
+    if(st===2){[150,240,330].forEach(function(y){jLig(548,y);});}
+    if(st>=3){[150,240,330].forEach(function(y){jLig(548,y);});
+      gx.fillStyle='#16a34a';for(var n=0;n<7;n++){var nx=575+((pt*2.6+n*37)%150),ny=140+((n*53)%210);gx.beginPath();gx.arc(nx,ny,5,0,6.29);gx.fill();}}
+    if(st===4){gx.fillStyle='#16a34a';for(var m=0;m<10;m++){gx.beginPath();gx.arc(620+((m*67)%360),120+((m*47)%240),5,0,6.29);gx.fill();}}
+  } else {
+    jVessel(dy); jGland(dy); jTarget(dy, st===4&&JMODE==='horm'); jGPCRs();
+    if(JMODE==='horm'){
+      if(st===0){for(var i0=0;i0<4;i0++)jLig(168+((pt*1.3+i0*16)%70),228+(i0%3)*14);}
+      if(st===1){for(var i1=0;i1<5;i1++)jLig(200+((pt*2.2+i1*105)%480),225+(i1%3)*16);}
+      if(st>=2){jLig(708,170);jLig(708,300); if(st===2)jLig(600+((pt)%60),235);}
+      if(st>=3){
+        gx.fillStyle='#f59e0b';gx.beginPath();gx.arc(748,170,11,0,6.29);gx.fill();gx.beginPath();gx.arc(748,300,11,0,6.29);gx.fill();
+        if(jFx.length<26&&Math.random()<0.35)jFx.push({x:762,y:Math.random()<0.5?170:300,vx:0.7+Math.random()*1.3,vy:-0.6+Math.random()*1.2,life:170});
+        jFx=jFx.filter(function(c){return c.life>0;});
+        jFx.forEach(function(c){c.x+=c.vx;c.y+=c.vy;c.life--;gx.fillStyle='#f59e0b';gx.beginPath();gx.arc(c.x,c.y,5,0,6.29);gx.fill();});
+        gx.fillStyle='#b45309';gx.font='600 12.5px Arial';gx.fillText(dy.jCamp,770,110);
+      }
+      if(st===4){gx.fillStyle='#16a34a';for(var gI=0;gI<6;gI++){var gx2=700-((pt*1.8+gI*26)%130);gx.beginPath();gx.arc(gx2,228+(gI%3)*16,5,0,6.29);gx.fill();}
+        for(var gJ=0;gJ<8;gJ++){gx.beginPath();gx.arc(770+((gJ*53)%230),120+((gJ*61)%250),5,0,6.29);gx.fill();}}
+    } else { /* steroid */
+      gx.fillStyle='#7c3aed';gx.beginPath();gx.ellipse(830,320,26,17,0.4,0,6.29);gx.fill();
+      if(st===0){for(var s0=0;s0<4;s0++)jLig(168+((pt*1.3+s0*16)%70),228+(s0%3)*14);}
+      if(st===1){for(var s1=0;s1<5;s1++)jLig(200+((pt*2.2+s1*105)%480),225+(s1%3)*16);}
+      if(st>=2){jLig(770,150);jLig(800,360);jLig(762,262);}
+      if(st===2){jLig(824,314);}
+      if(st>=3){
+        var tt=Math.min(1,(pt%300)/300), cx=830+(905-830)*tt, cy=320+(248-320)*tt;
+        gx.fillStyle='#7c3aed';gx.beginPath();gx.ellipse(cx,cy,26,17,0.4,0,6.29);gx.fill(); jLig(cx-6,cy-4,6);
+      }
+      if(st===4){
+        gx.fillStyle='#7c3aed';gx.beginPath();gx.ellipse(935,240,26,17,0.4,0,6.29);gx.fill(); jLig(929,236,6);
+        gx.fillStyle='#a855f7';for(var mR=0;mR<4;mR++){var mx=860-((pt*1.6+mR*30)%110);gx.beginPath();gx.arc(mx,215+(mR%3)*22,4,0,6.29);gx.fill();}
+        gx.fillStyle='#16a34a';for(var pR=0;pR<7;pR++){gx.beginPath();gx.arc(745+((pR*61)%180),110+((pR*53)%240),5,0,6.29);gx.fill();}
+      }
+    }
+  }
+  jLegendBox(dy);
+  var caps=dy.jCap[JMODE];
+  document.getElementById('jStep').textContent=caps[Math.min(st,caps.length-1)];
+  jT++;
+  requestAnimationFrame(jDraw);
+}
+jDraw();
+</script>
+
+<script>
+"use strict";
+/* ---------- Tab 3: local vs distant race ---------- */
+var race={on:false,synX:0,horX:0,t:0};
+var cvR=document.getElementById('cvRace'), rg=cvR.getContext('2d');
+document.getElementById('bRaceGo').addEventListener('click',function(){race={on:true,synX:430,horX:120,t:0};});
+document.getElementById('bRaceReset').addEventListener('click',function(){race={on:false,synX:0,horX:0,t:0};document.getElementById('raceInfo').textContent=D().dyn.raceL.idle;});
+function raceDraw(){
+  var L=D().dyn.raceL; rg.clearRect(0,0,1080,300);
+  rg.font='600 13.5px Be Vietnam Pro,Arial';rg.fillStyle='#0f172a';
+  // lane 1: synapse
+  rg.fillText(L.syn,40,38);
+  rg.fillStyle='#dbeafe';rg.fillRect(40,55,390,80);
+  rg.fillStyle='#f1f5f9';rg.fillRect(452,55,588,80);rg.strokeStyle='#94a3b8';rg.strokeRect(452,55,588,80);
+  rg.strokeStyle='#2563eb';rg.lineWidth=4;rg.beginPath();rg.moveTo(452,58);rg.lineTo(452,132);rg.stroke();
+  rg.fillStyle='#7c3aed';rg.fillRect(446,80,14,30);
+  // lane 2: blood
+  rg.fillStyle='#0f172a';rg.fillText(L.hor,40,185);
+  rg.fillStyle='#fee2e2';rg.fillRect(40,205,830,60);rg.strokeStyle='#fca5a5';rg.lineWidth=2;rg.strokeRect(40,205,830,60);
+  rg.fillStyle='#f1f5f9';rg.fillRect(890,205,150,60);rg.strokeStyle='#94a3b8';rg.strokeRect(890,205,150,60);
+  rg.strokeStyle='#2563eb';rg.lineWidth=4;rg.beginPath();rg.moveTo(890,210);rg.lineTo(890,260);rg.stroke();
+  rg.fillStyle='#7c3aed';rg.fillRect(884,215,14,32);
+  var info=L.idle;
+  if(race.on){
+    race.t++;
+    if(race.synX<446)race.synX+=7;
+    if(race.horX<884)race.horX+=1.35;
+    rg.fillStyle='#e4572e';rg.beginPath();rg.arc(race.synX,95,7,0,6.29);rg.fill();
+    var fade=Math.max(0.25,1-(race.horX-120)/1100);
+    rg.globalAlpha=fade;rg.beginPath();rg.arc(race.horX,235,8,0,6.29);rg.fill();rg.globalAlpha=1;
+    if(race.synX>=446&&race.horX<500)info=L.synDone;
+    else if(race.horX>=500&&race.horX<884)info=L.synDone+' '+L.mid;
+    else if(race.horX>=884)info=L.synDone+' '+L.done;
+  }
+  if(race.on){
+    rg.fillStyle='#0f172a';rg.font='700 13px Be Vietnam Pro,Arial';rg.textAlign='right';
+    if(race.synX>=446)rg.fillText(L.synT,1040,38);
+    var mm=Math.max(0,Math.min(5,(race.horX-120)/764*5));
+    rg.fillText(L.horT.replace('{m}',LANG==='vi'?mm.toFixed(1).replace('.',','):mm.toFixed(1)),1040,185);
+    rg.textAlign='left';
+    document.getElementById('raceInfo').textContent=info;
+  }
+  requestAnimationFrame(raceDraw);
+}
+raceDraw();
+/* ---------- Tab 4: amplification cascade as a branching model ---------- */
+var CASC={step:1,t:0};
+var cascTimers=[];
+var cvC=document.getElementById('cvCasc'), cg=cvC.getContext('2d');
+var CASC_N=[1,3,9,27,81,243], CASC_COL=['#e4572e','#7c3aed','#2563eb','#0891b2','#16a34a','#d97706'];
+function cascRowX(n,k){
+  var sp=n<=27?30:(n===81?9.6:3.3);
+  return 615-(n-1)*sp/2+k*sp;
+}
+function cascDraw(){
+  var names=D().dyn.cascStages;
+  cg.clearRect(0,0,1080,430);
+  // connectors between active rows
+  for(var i=0;i<5;i++){
+    if(i+1>=CASC.step)break;
+    if(i>=4)break;
+    cg.strokeStyle='rgba(100,116,139,'+(i<3?0.4:0.16)+')'; cg.lineWidth=1.4;
+    for(var pk=0;pk<CASC_N[i];pk++){
+      var px=cascRowX(CASC_N[i],pk), py=46+i*63;
+      for(var cix=0;cix<3;cix++){
+        cg.beginPath();cg.moveTo(px,py+8);cg.lineTo(cascRowX(CASC_N[i+1],pk*3+cix),46+(i+1)*63-8);cg.stroke();
+      }
+    }
+    cg.fillStyle='#64748b';cg.font='700 13px Be Vietnam Pro,Arial';cg.textAlign='left';
+    cg.fillText('×3',186,46+i*63+36);
+  }
+  // rows of molecules
+  for(var r=0;r<6;r++){
+    var n=CASC_N[r], y=46+r*63, active=r<CASC.step;
+    cg.font='700 14px Be Vietnam Pro,Arial';cg.textAlign='left';
+    cg.fillStyle=active?CASC_COL[r]:'#94a3b8';
+    cg.fillText(names[r],14,y+5);
+    var rad=n<=27?10:(n===81?4.4:1.7);
+    if(active&&r===CASC.step-1&&CASC.step>1)rad*=1+0.13*Math.sin(CASC.t/6);
+    for(var k=0;k<n;k++){
+      cg.beginPath();cg.arc(cascRowX(n,k),y,rad,0,6.29);
+      if(active){cg.fillStyle=CASC_COL[r];cg.globalAlpha=0.92;}
+      else{cg.fillStyle='#94a3b8';cg.globalAlpha=0.16;}
+      cg.fill();cg.globalAlpha=1;
+    }
+    if(active){
+      cg.font='800 21px Be Vietnam Pro,Arial';cg.textAlign='right';
+      cg.fillStyle=CASC_COL[r];cg.fillText(String(n),1064,y+7);cg.textAlign='left';
+    }
+  }
+  CASC.t++;
+  requestAnimationFrame(cascDraw);
+}
+cascDraw();
+document.getElementById('bCasc').addEventListener('click',function(){
+  cascTimers.forEach(clearTimeout); cascTimers=[];
+  CASC.step=1;
+  for(var i=2;i<=6;i++)(function(i){
+    cascTimers.push(setTimeout(function(){CASC.step=i;},(i-1)*550));
+  })(i);
+});
+/* ---------- Tab 4: GPCR mechanism ---------- */
+var gpPhase=0, gpTimer=null;
+var cvG=document.getElementById('cvGPCR'), gg=cvG.getContext('2d');
+document.getElementById('bGpGo').addEventListener('click',function(){
+  if(gpTimer)return; gpPhase=1;
+  gpTimer=setInterval(function(){gpPhase++; if(gpPhase>=4){gpPhase=4;clearInterval(gpTimer);gpTimer=null;}},1700);
+});
+document.getElementById('bGpReset').addEventListener('click',function(){
+  if(gpTimer){clearInterval(gpTimer);gpTimer=null;} gpPhase=0;
+});
+function gpDraw(){
+  var L=D().dyn.gpL; gg.clearRect(0,0,1080,420);
+  gg.font='600 13px Be Vietnam Pro,Arial';
+  // membrane
+  gg.fillStyle='#93c5fd';gg.fillRect(60,185,960,22);gg.fillStyle='#fcd34d';gg.fillRect(60,207,960,22);
+  // GPCR serpentine
+  gg.strokeStyle='#7c3aed';gg.lineWidth=15;gg.beginPath();
+  gg.moveTo(390,160);
+  for(var i=0;i<7;i++){var x=390+i*26;gg.lineTo(x+(i%2?26:0),i%2?245:160);}
+  gg.stroke();
+  gg.fillStyle='#0f172a';gg.fillText(L.rec,330,140);
+  // ligand approaches / docks by phase
+  var ly=gpPhase===0?70:132, lx=440;
+  gg.fillStyle='#e4572e';gg.beginPath();gg.arc(lx,ly,13,0,6.29);gg.fill();
+  gg.fillStyle='#0f172a';gg.fillText(L.lig,lx-16,ly-22);
+  // G protein: alpha + beta/gamma
+  var ax=gpPhase>=3?700:600, ay=268;
+  gg.fillStyle='#f59e0b';gg.beginPath();gg.arc(600,268,20,0,6.29);gg.fill();
+  gg.fillStyle='#fbbf24';gg.beginPath();gg.arc(ax,ay,17,0,6.29);gg.fill();
+  gg.fillStyle='#0f172a';gg.fillText(L.gp,560,320);
+  gg.font='700 12px Arial';gg.fillText(gpPhase>=2?'GTP':'GDP',ax-11,ay+4);gg.font='600 13px Be Vietnam Pro,Arial';
+  if(gpPhase>=3)gg.fillText(L.al,ax-16,ay-28);
+  // effector + cAMP
+  gg.fillStyle='#16a34a';gg.beginPath();gg.roundRect(790,243,110,52,12);gg.fill();
+  gg.fillStyle='#fff';gg.fillText(L.eff,800,273);
+  if(gpPhase>=4){gg.fillStyle='#f59e0b';for(var c=0;c<8;c++){gg.beginPath();gg.arc(920+((c*37)%120),250+((c*29)%70),6,0,6.29);gg.fill();}
+    gg.fillStyle='#b45309';gg.fillText(L.camp,930,240);}
+  document.getElementById('gpStep').textContent=L.steps[gpPhase];
+  requestAnimationFrame(gpDraw);
+}
+gpDraw();
+</script>
+
+<script>
+"use strict";
+/* ---------- Tab 5: insulin receptor (RTK) as a step-driven model ---------- */
+var INSIDX=0;
+function buildIns(){
+  document.getElementById('insStep').innerHTML='<b>'+(LANG==='vi'?'Bước ':'Step ')+(INSIDX+1)+'/5</b><br>'+D().dyn.insL.steps[INSIDX];
+}
+document.getElementById('bInsPrev').addEventListener('click',function(){INSIDX=Math.max(0,INSIDX-1);buildIns();});
+document.getElementById('bInsNext').addEventListener('click',function(){INSIDX=Math.min(4,INSIDX+1);buildIns();});
+document.getElementById('bInsReset').addEventListener('click',function(){INSIDX=0;buildIns();});
+buildIns();
+var cvI=document.getElementById('cvIns'), ig=cvI.getContext('2d');
+var INST=0, INSLAST=-1;
+function insDraw(){
+  if(INSIDX!==INSLAST){INSLAST=INSIDX;INST=0;}
+  var L=D().dyn.insL, st=INSIDX, t=INST;
+  ig.clearRect(0,0,1080,400);
+  ig.font='600 12px Be Vietnam Pro,Arial';
+  // blood vessel band
+  ig.fillStyle='#fee2e2'; ig.fillRect(0,14,1080,62);
+  ig.fillStyle='#991b1b'; ig.fillText(L.blood,16,36);
+  ig.fillStyle='#7c2d12'; ig.fillText('Insulin',16,66);
+  ig.fillStyle='#db2777';
+  for(var i=0;i<3;i++){var bx=((t*1.3+i*340)%1180)-50; ig.beginPath(); ig.arc(bx,50,6.5,0,6.29); ig.fill();}
+  // glucose dots in the blood (fewer as uptake proceeds) + meter
+  var nG=[10,10,9,7,5][st];
+  ig.fillStyle='#16a34a';
+  for(var gI=0;gI<nG;gI++){ig.beginPath(); ig.arc(120+((gI*97)%860),34+((gI*29)%34),5,0,6.29); ig.fill();}
+  ig.font='700 13px Be Vietnam Pro,Arial'; ig.textAlign='right'; ig.fillStyle='#991b1b';
+  ig.fillText('Glucose '+[100,96,88,74,60][st]+'%',1064,66); ig.textAlign='left';
+  ig.font='600 12px Be Vietnam Pro,Arial';
+  // muscle cell
+  ig.fillStyle='#fff7ed'; ig.beginPath(); ig.roundRect(60,96,960,288,22); ig.fill();
+  ig.strokeStyle='#d6a35c'; ig.lineWidth=2; ig.stroke();
+  ig.fillStyle='#92400e'; ig.fillText(L.cell,76,120);
+  // one pre-existing glucose transporter (uptake is slow at the start)
+  ig.fillStyle='#99f6e4'; ig.fillRect(880,86,18,30);
+  // RTK dimer: the two subunits close together once insulin binds
+  var gap=st>=1?26:36, cxL=303-gap/2, cxR=303+gap/2;
+  ig.fillStyle='#7c3aed';
+  [cxL,cxR].forEach(function(cx){
+    ig.beginPath(); ig.roundRect(cx-7,72,14,98,7); ig.fill();
+    ig.beginPath(); ig.arc(cx,68,9,0,6.29); ig.fill();
+  });
+  ig.fillStyle='#5b21b6'; ig.fillText(L.rec,232,196);
+  // the insulin molecule that binds (step 2 of the stepper)
+  if(st>=1){
+    var ix,iy;
+    if(st===1){var pr=Math.min(1,t/42); ix=170+(303-170)*pr; iy=50+(63-50)*pr;}
+    else{ix=303; iy=63;}
+    ig.fillStyle='#db2777'; ig.beginPath(); ig.arc(ix,iy,8,0,6.29); ig.fill();
+  }
+  // tyrosine phosphorylation badges + first signal proteins
+  if(st>=2){
+    ig.fillStyle='#f59e0b';
+    [cxL,cxR].forEach(function(cx){ ig.beginPath(); ig.arc(cx,156,9,0,6.29); ig.fill(); });
+    ig.fillStyle='#fff'; ig.font='800 10px Arial'; ig.fillText('P',cxL-3,160); ig.fillText('P',cxR-3,160);
+    ig.font='600 12px Be Vietnam Pro,Arial';
+    ig.fillStyle='#16a34a';
+    [[352,158],[378,168],[404,158]].forEach(function(pt){ ig.beginPath(); ig.arc(pt[0],pt[1],6,0,6.29); ig.fill(); });
+  }
+  // GLUT vesicles rise to the membrane, then fuse as transporters
+  var vesX=[520,650,780];
+  if(st===3){
+    var rise=Math.min(182,t*2.2);
+    vesX.forEach(function(x){
+      var vy=306-rise;
+      ig.strokeStyle='#16a34a'; ig.lineWidth=3; ig.beginPath(); ig.arc(x,vy,17,0,6.29); ig.stroke();
+      ig.fillStyle='#0d9488'; ig.fillRect(x-3,vy-24,6,10);
+    });
+    ig.fillStyle='#14532d'; ig.fillText(L.ves,520,362);
+  }
+  if(st>=4){
+    ig.fillStyle='#0d9488';
+    vesX.forEach(function(x){ ig.fillRect(x-9,86,18,30); });
+    // glucose streams in through the new transporters
+    ig.fillStyle='#16a34a';
+    vesX.forEach(function(x){
+      for(var k=0;k<4;k++){
+        var yy=30+((t*2.4+k*72+x)%322);
+        ig.beginPath(); ig.arc(x,yy,5,0,6.29); ig.fill();
+      }
+    });
+    for(var aI=0;aI<8;aI++){ ig.beginPath(); ig.arc(500+((aI*83)%430),250+((aI*47)%110),5,0,6.29); ig.fill(); }
+    ig.fillStyle='#14532d'; ig.fillText(L.glu,560,150);
+  }
+  INST++;
+  requestAnimationFrame(insDraw);
+}
+insDraw();
+/* ---------- Tab 5: melatonin & circadian rhythm ---------- */
+var cvM=document.getElementById('cvMel'), mg=cvM.getContext('2d');
+function melLevel(h){ // 0..1, peaks ~02:00
+  var d=Math.min(Math.abs(h-2),24-Math.abs(h-2));
+  return Math.max(0.04,Math.exp(-(d*d)/14));
+}
+function drawMel(){
+  var h=+document.getElementById('rHour').value, L=D().dyn.melL;
+  document.getElementById('vHour').textContent=String(h).padStart(2,'0')+':00';
+  var day=Math.max(0,Math.sin((h-6)/12*Math.PI)); if(h<6||h>18)day=0;
+  var rC=Math.round(30+ (200-30)*day), gC=Math.round(40+(225-40)*day), bC=Math.round(80+(255-80)*day);
+  mg.clearRect(0,0,1080,300);
+  mg.fillStyle='rgb('+rC+','+gC+','+bC+')';mg.fillRect(30,20,660,250);
+  // sun / moon along an arc
+  var ang=Math.PI*(h/24), sx=80+560*(h/24), sy=250-190*Math.sin(ang);
+  if(h>=6&&h<=18){mg.fillStyle='#fbbf24';mg.beginPath();mg.arc(sx,sy,24,0,6.29);mg.fill();}
+  else{mg.fillStyle='#e2e8f0';mg.beginPath();mg.arc(sx,sy,18,0,6.29);mg.fill();mg.fillStyle='rgb('+rC+','+gC+','+bC+')';mg.beginPath();mg.arc(sx+8,sy-5,15,0,6.29);mg.fill();}
+  mg.fillStyle=day>0.25?'#0f172a':'#f1f5f9';mg.font='700 17px Be Vietnam Pro,Arial';
+  mg.fillText(String(h).padStart(2,'0')+':00',330,52);
+  // pathway boxes
+  var mel=melLevel(h);
+  mg.font='600 12.5px Be Vietnam Pro,Arial';
+  function box(x,label,act,col){mg.fillStyle=act>0.5?col:'#e2e8f0';mg.beginPath();mg.roundRect(x,282-0,0,0,0);mg.fill();
+    mg.fillStyle=act>0.5?'#fff':'#64748b';}
+  // simpler: three labelled chips under the sky
+  mg.fillStyle='#fff';mg.strokeStyle='#94a3b8';
+  mg.fillText('',0,0);
+  // melatonin bar
+  mg.fillStyle='#0f172a';mg.font='600 13px Be Vietnam Pro,Arial';
+  mg.fillText('Melatonin',760,40);
+  mg.fillStyle='#e2e8f0';mg.fillRect(760,55,44,180);
+  mg.fillStyle='#7c3aed';mg.fillRect(760,55+180*(1-mel),44,180*mel);
+  mg.fillStyle='#0f172a';
+  mg.fillText(L.scn,830,90); mg.fillText('→ '+(day>0.2?'ON':'OFF'),980,90);
+  mg.fillText(L.pin,830,130); mg.fillText('→ '+(mel>0.45?'ON':'OFF'),980,130);
+  mg.font='700 15px Be Vietnam Pro,Arial';
+  var state=mel<0.3?L.low:(mel<0.65?L.mid:L.high);
+  mg.fillText(state,830,190);
+  mg.font='600 12.5px Be Vietnam Pro,Arial';mg.fillStyle='#475569';
+  mg.fillText(L.eye+' → SCN → '+(LANG==='vi'?'Tuyến tùng':'Pineal gland'),830,225);
+  document.getElementById('melInfo').textContent=state+' · '+String(h).padStart(2,'0')+':00';
+}
+document.getElementById('rHour').addEventListener('input',drawMel);
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setTimeout(drawMel,40);});});
+drawMel();
+</script>
+
+<script>
+"use strict";
+/* ---------- Tab 6: practice test data ---------- */
+var EXL={
+vi:{title:"ĐỀ KIỂM TRA - TÍN HIỆU HOÁ HỌC (HL)",timerL:"Thời gian làm bài: ",sugg:"(gợi ý: 40 phút)",submit:"Kiểm tra",
+partA:"Phần A - Trắc nghiệm",partB:"Phần B - Câu hỏi trả lời ngắn / có cấu trúc",partC:"Phần C - Câu hỏi dựa trên số liệu",
+lv:["Nhận biết","Thông hiểu","Vận dụng thấp","Vận dụng cao"],marks:"điểm",schemeT:"Thang điểm: ",selfL:"Tự chấm: ",selfPh:"",
+right:"Đúng. ",wrong:"Chưa đúng. Đáp án đúng được tô xanh.",doneL:"Đã làm: ",
+resT:"KẾT QUẢ",mcqL:"Trắc nghiệm: ",totL:"Tổng điểm: ",timeL:"Thời gian làm bài: ",
+tabX:"Thời điểm",tabY:"Melatonin (pg/mL)",cxT:"Thời điểm trong ngày",cyT:"Melatonin (pg/mL)",
+confirmMsg:"Còn câu chưa làm xong. Vẫn nộp bài để kiểm tra?",confirmReset:""},
+en:{title:"PRACTICE TEST - CHEMICAL SIGNALLING (HL)",timerL:"Time taken: ",sugg:"(suggested: 40 minutes)",submit:"Check my work",
+partA:"Part A - Multiple choice",partB:"Part B - Short-answer / structured questions",partC:"Part C - Data-based question",
+lv:["Recall","Understanding","Application - lower","Application - higher"],marks:"marks",schemeT:"Mark scheme: ",selfL:"Self-mark: ",selfPh:"",
+right:"Correct. ",wrong:"Not correct. The right answer is shown in green.",doneL:"Answered: ",
+resT:"RESULT",mcqL:"Multiple choice: ",totL:"Total: ",timeL:"Time taken: ",
+tabX:"Time of day",tabY:"Melatonin (pg/mL)",cxT:"Time of day",cyT:"Melatonin (pg/mL)",
+confirmMsg:"Some questions are still blank. Submit and check anyway?",confirmReset:""}
+};
+var DBQDATA={x:["18:00","20:00","22:00","00:00","02:00","04:00","06:00","08:00"],y:[8,15,38,65,82,70,25,9]};
+var EXAM={
+vi:{mcq:[
+{lvl:0,q:"Thụ thể trong truyền tín hiệu hoá học là:",o:["Một phân tử tín hiệu lưu thông trong máu","Một protein có vị trí gắn đặc hiệu với một phân tử tín hiệu","Một enzyme phân huỷ hormone trong máu","Một kênh vận chuyển glucose trên màng"],a:1},
+{lvl:0,q:"Hormone nào sau đây thuộc nhóm steroid?",o:["Insulin","Epinephrine","Cortisol","Glucagon"],a:2},
+{lvl:1,q:"Vì sao epinephrine gây được đáp ứng mà không cần đi vào tế bào đích?",o:["Vì nó tự khuếch tán qua lớp lipid kép","Vì thụ thể của nó nằm trên màng tế bào, vị trí gắn hướng ra phía ngoài tế bào","Vì nó được tế bào đích đưa vào qua kênh ion","Vì nó gắn trực tiếp lên DNA trong nhân"],a:1},
+{lvl:1,q:"Điểm khác nhau cốt lõi giữa thụ thể nội bào và thụ thể xuyên màng là:",o:["Thụ thể nội bào không cần phân tử tín hiệu","Phân tử tín hiệu của thụ thể nội bào phải xuyên qua được màng tế bào để tới thụ thể","Thụ thể xuyên màng chỉ có ở neuron","Thụ thể nội bào luôn nằm trong màng tế bào"],a:1},
+{lvl:1,q:"Trong tế bào đích của epinephrine, cAMP đóng vai trò:",o:["Phân tử tín hiệu gắn vào GPCR","Chất truyền tin thứ nhất","Chất truyền tin thứ hai","Protein vận chuyển glucose"],a:2},
+{lvl:2,q:"Một phân tử tín hiệu gắn vào GPCR trên màng tế bào gan. Ngay sau khi G protein được hoạt hoá, sự kiện nào xảy ra?",o:["cAMP bị phân huỷ thành ATP","Tiểu đơn vị α mang GTP tách ra và hoạt hoá enzyme adenylyl cyclase","Tuyến tuỵ tiết insulin","Tế bào tổng hợp glycogen ngay lập tức"],a:1},
+{lvl:2,q:"Insulin gắn vào thụ thể trên tế bào cơ xương. Kết quả trực tiếp cuối cùng của chuỗi truyền tín hiệu là:",o:["Tế bào phân giải glycogen thành glucose","Các túi chứa protein vận chuyển glucose hợp nhất với màng, làm tăng hấp thu glucose","Nồng độ cAMP trong tế bào tăng cao","Các gốc tyrosine bị khử phosphoryl hoá"],a:1},
+{lvl:2,q:"Lúc nửa đêm, một học sinh bật đèn sáng mạnh để học bài. Điều gì xảy ra với nồng độ melatonin trong máu?",o:["Tăng mạnh vì mắt nhận được nhiều ánh sáng","Giảm, vì SCN nhận tín hiệu ánh sáng và ức chế tuyến tùng tiết melatonin","Không đổi, vì melatonin chỉ phụ thuộc vào đồng hồ sinh học","Tăng vọt rồi giảm ngay trong vòng một phút"],a:1},
+{lvl:3,q:"Một thác tín hiệu gồm 3 tầng khuếch đại; mỗi phân tử ở mỗi tầng hoạt hoá 10 phân tử ở tầng sau. Bỏ qua mất mát, một phân tử tín hiệu khởi đầu tạo ra tối đa khoảng bao nhiêu phân tử sản phẩm ở tầng cuối?",o:["30","100","1 000","10 000"],a:2},
+{lvl:3,q:"Một đột biến làm tiểu đơn vị α của G protein mất khả năng thuỷ phân GTP thành GDP. Hậu quả dự đoán ở tế bào đích là:",o:["Tín hiệu không bao giờ được bật lên","Tín hiệu bị kéo dài vì G protein không tắt được","Thụ thể không gắn được phân tử tín hiệu nữa","cAMP không được tạo ra"],a:1}],
+sa:[
+{t:"Phân biệt thụ thể xuyên màng và thụ thể nội bào theo vị trí của thụ thể, bản chất hoá học của phân tử tín hiệu và sự phân bố amino acid trên thụ thể. Cho một ví dụ phân tử tín hiệu cho mỗi loại thụ thể.",max:4,
+scheme:"Vị trí: thụ thể xuyên màng nằm trong màng sinh chất với vị trí gắn ở mặt ngoài tế bào; thụ thể nội bào nằm trong tế bào chất hoặc trong nhân [1]. Phân tử tín hiệu của thụ thể xuyên màng ưa nước, không qua được màng - ví dụ insulin hoặc epinephrine [1]. Phân tử tín hiệu của thụ thể nội bào kị nước, tự xuyên qua màng - ví dụ hormone steroid như testosterone hoặc cortisol [1]. Phân bố amino acid: phần nằm trong màng của thụ thể xuyên màng giàu amino acid kị nước, các phần thò ra hai phía giàu amino acid ưa nước; bề mặt thụ thể nội bào giàu amino acid ưa nước [1]."},
+{t:"Mô tả cơ chế epinephrine làm tế bào gan phân giải glycogen, từ lúc hormone gắn vào thụ thể đến khi glucose được tạo ra.",max:4,
+scheme:"Epinephrine gắn vào thụ thể liên kết G protein (GPCR) trên màng tế bào gan [1]. G protein được hoạt hoá: tiểu đơn vị α đổi GDP thành GTP và hoạt hoá enzyme adenylyl cyclase [1]. Adenylyl cyclase biến ATP thành cAMP - chất truyền tin thứ hai - với lượng lớn, khuếch đại tín hiệu [1]. cAMP hoạt hoá protein kinase A, khởi phát thác enzyme mà enzyme cuối (glycogen phosphorylase) phân giải glycogen thành glucose [1]."}],
+dbq:{ctx:"Melatonin là hormone do tuyến tùng tiết ra, giúp thiết lập nhịp ngủ - thức trong ngày. Một nghiên cứu đo nồng độ melatonin trong huyết tương của một người trưởng thành khoẻ mạnh, sinh hoạt theo điều kiện sáng - tối tự nhiên, tại các thời điểm khác nhau trong ngày.",
+parts:[
+{t:"(a) Mô tả xu hướng thay đổi nồng độ melatonin từ 18:00 đến 08:00.",max:2,scheme:"Nồng độ tăng dần từ chiều tối (8 pg/mL lúc 18:00), đạt đỉnh 82 pg/mL lúc 02:00 [1]; sau đó giảm mạnh về buổi sáng, xuống 9 pg/mL lúc 08:00 [1]."},
+{t:"(b) Tính nồng độ melatonin lúc đỉnh gấp khoảng bao nhiêu lần so với lúc 18:00.",max:1,scheme:"82 / 8 ≈ 10,3 - gấp khoảng 10 lần [1]."},
+{t:"(c) Giải thích cơ chế tạo ra nhịp melatonin này, có nhắc tới nhân trên chéo thị giác (SCN) và ánh sáng.",max:2,scheme:"SCN ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng; khi trời tối (không có tín hiệu ánh sáng), tuyến tùng được phép tiết melatonin mạnh [1]. Ban ngày, ánh sáng qua mắt làm SCN ức chế tuyến tùng, nên nồng độ melatonin duy trì thấp [1]."},
+{t:"(d) Dự đoán điều gì xảy ra với giấc ngủ của người này nếu họ dùng thiết bị phát ánh sáng mạnh lúc 23:00, kèm giải thích.",max:1,scheme:"Ánh sáng mạnh lúc 23:00 ức chế tiết melatonin qua SCN, làm giảm cảm giác buồn ngủ - người này khó ngủ / ngủ muộn hơn [1]."}]}},
+en:{mcq:[
+{lvl:0,q:"A ligand is:",o:["A receptor protein in the cell membrane","The signalling molecule that binds to a specific binding site on a receptor","A second messenger in the cytoplasm","An enzyme that amplifies a signal in the nucleus"],a:1},
+{lvl:0,q:"Which of the following hormones is a steroid?",o:["Insulin","Epinephrine","Cortisol","Glucagon"],a:2},
+{lvl:1,q:"Why can epinephrine cause a response without entering the target cell?",o:["Because it diffuses by itself through the lipid bilayer","Because its receptor sits in the plasma membrane with the binding site facing outside the cell","Because the target cell takes it in through an ion channel","Because it binds directly to DNA in the nucleus"],a:1},
+{lvl:1,q:"The core difference between intracellular receptors and transmembrane receptors is:",o:["Intracellular receptors do not need a ligand","The ligand of an intracellular receptor must be able to cross the cell membrane to reach it","Transmembrane receptors occur only in neurons","Intracellular receptors are always located in the cell membrane"],a:1},
+{lvl:1,q:"In an epinephrine target cell, cAMP acts as:",o:["The ligand binding the GPCR","The first messenger","The second messenger","A glucose transporter protein"],a:2},
+{lvl:2,q:"A ligand binds a GPCR in a liver cell membrane. Immediately after the G protein is activated, what happens?",o:["cAMP is broken down into ATP","The alpha subunit carrying GTP separates and activates the enzyme adenylyl cyclase","The pancreas secretes insulin","The cell immediately synthesizes glycogen"],a:1},
+{lvl:2,q:"Insulin binds its receptor on a skeletal muscle cell. The final direct result of the signalling chain is:",o:["The cell breaks glycogen down into glucose","Vesicles containing glucose transporters fuse with the membrane, increasing glucose uptake","The cAMP concentration in the cell rises sharply","Tyrosine residues are dephosphorylated"],a:1},
+{lvl:2,q:"At midnight, a student switches on a bright light to study. What happens to the melatonin concentration in the blood?",o:["It rises sharply because the eyes receive more light","It falls, because the SCN receives the light signal and inhibits melatonin secretion by the pineal gland","It stays unchanged, because melatonin depends only on the body clock","It spikes and then drops within one minute"],a:1},
+{lvl:3,q:"A signalling cascade has 3 amplification levels; each molecule at each level activates 10 molecules at the next. Ignoring losses, roughly how many product molecules can one starting ligand produce at the final level?",o:["30","100","1 000","10 000"],a:2},
+{lvl:3,q:"A mutation makes the alpha subunit of a G protein unable to hydrolyse GTP back to GDP. The predicted consequence in the target cell is:",o:["The signal can never be switched on","The signal is prolonged because the G protein cannot switch itself off","The receptor can no longer bind its ligand","No cAMP is produced"],a:1}],
+sa:[
+{t:"Distinguish between transmembrane receptors and intracellular receptors in terms of the receptor's position, the chemical nature of the ligand, and the distribution of amino acids on the receptor. Give one example ligand for each receptor type.",max:4,
+scheme:"Position: a transmembrane receptor sits in the plasma membrane with its binding site on the outer surface; an intracellular receptor is in the cytoplasm or nucleus [1]. Ligands of transmembrane receptors are hydrophilic and cannot cross the membrane - e.g. insulin or epinephrine [1]. Ligands of intracellular receptors are hydrophobic and cross the membrane by themselves - e.g. steroid hormones such as testosterone or cortisol [1]. Amino acid distribution: the membrane-spanning part of a transmembrane receptor is rich in hydrophobic amino acids while the parts projecting on either side are rich in hydrophilic amino acids; the surface of an intracellular receptor is rich in hydrophilic amino acids [1]."},
+{t:"Describe the mechanism by which epinephrine makes a liver cell break down glycogen, from the hormone binding its receptor to glucose being produced.",max:4,
+scheme:"Epinephrine binds a G protein-coupled receptor (GPCR) in the liver cell membrane [1]. The G protein is activated: the alpha subunit swaps GDP for GTP and activates the enzyme adenylyl cyclase [1]. Adenylyl cyclase converts ATP into large amounts of cAMP - the second messenger - amplifying the signal [1]. cAMP activates protein kinase A, starting an enzyme cascade whose final enzyme (glycogen phosphorylase) breaks glycogen down into glucose [1]."}],
+dbq:{ctx:"Melatonin is a hormone secreted by the pineal gland that helps establish the daily sleep-wake rhythm. A study measured the plasma melatonin concentration of a healthy adult living under natural light-dark conditions, at different times of day.",
+parts:[
+{t:"(a) Describe the trend in melatonin concentration from 18:00 to 08:00.",max:2,scheme:"The concentration rises through the evening (8 pg/mL at 18:00) to a peak of 82 pg/mL at 02:00 [1]; it then falls steeply towards morning, down to 9 pg/mL at 08:00 [1]."},
+{t:"(b) Calculate roughly how many times higher the peak melatonin concentration is than the value at 18:00.",max:1,scheme:"82 / 8 ≈ 10.3 - about 10 times higher [1]."},
+{t:"(c) Explain the mechanism that produces this melatonin rhythm, referring to the suprachiasmatic nuclei (SCN) and light.",max:2,scheme:"The SCN in the hypothalamus receive light information from the eyes and control the pineal gland; in darkness (no light signal) the pineal gland is allowed to secrete melatonin strongly [1]. In daylight, light via the eyes makes the SCN inhibit the pineal gland, so melatonin stays low [1]."},
+{t:"(d) Predict what would happen to this person's sleep if they used a bright-light device at 23:00, with an explanation.",max:1,scheme:"Bright light at 23:00 suppresses melatonin secretion via the SCN, reducing sleepiness - the person finds it harder to fall asleep / sleeps later [1]."}]}}
+};
+</script>
+<script>
+"use strict";
+var EXKEY='ib_signal_exam_v1';
+var EXS={started:null,mcq:{},sa:['',''],dbq:['','','',''],submitted:false,mcqScore:0,self:{sa:[null,null],dbq:[null,null,null,null]},elapsed:0};
+try{var sv=JSON.parse(localStorage.getItem(EXKEY)||'null');if(sv&&sv.mcq){EXS=sv;if(!Array.isArray(EXS.self.dbq))EXS.self.dbq=[null,null,null,null];}}catch(e){}
+var EXTIMER=null;
+function exSave(){try{localStorage.setItem(EXKEY,JSON.stringify(EXS));}catch(e){}}
+function exFmt(sec){sec=Math.max(0,Math.floor(sec));var m=Math.floor(sec/60),s=sec%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+function exAnswered(){var n=0,i;for(i=0;i<10;i++)if(EXS.mcq[i]!==undefined)n++;EXS.sa.forEach(function(t){if(t.trim())n++;});EXS.dbq.forEach(function(t){if(t.trim())n++;});return n;}
+function exTick(){var el=document.getElementById('exTimer');if(!el)return;var sec=EXS.submitted?EXS.elapsed:(EXS.started?(Date.now()-EXS.started)/1000:0);el.textContent=exFmt(sec);}
+function exStartTimer(){if(EXTIMER)clearInterval(EXTIMER);EXTIMER=setInterval(exTick,500);exTick();}
+function buildExam(){
+  var L=EXL[LANG],E=EXAM[LANG];
+  if(!EXS.started&&!EXS.submitted&&document.getElementById('t6').classList.contains('on')){
+    EXS.started=Date.now(); if(!EXS.startTime)EXS.startTime=EXS.started; exSave();
+  }
+  document.getElementById('exTitle').textContent=L.title;
+  document.getElementById('bSubmitExam').textContent=L.submit;
+  var c='<span class="small"><b>'+L.timerL+'</b><span id="exTimer">00:00</span> '+L.sugg+'</span>';
+  c+='<span class="small"><b>'+L.doneL+'</b><span id="exDone">'+exAnswered()+' / 16</span></span>';
+  document.getElementById('exControls').innerHTML=c;
+  renderMcq(); renderWritten(); renderExResult();
+  if(EXS.started&&!EXS.submitted)exStartTimer();else exTick();
+}
+function renderMcq(){
+  var L=EXL[LANG],E=EXAM[LANG],html='<h3>'+L.partA+'</h3>';
+  E.mcq.forEach(function(item,qi){
+    var chosen=EXS.mcq[qi];
+    html+='<div><p><span class="lvl">'+L.lv[item.lvl]+'</span><b>'+(qi+1)+'.</b> '+item.q+'</p>';
+    html+='<div class="optgrid">';
+    item.o.forEach(function(op,oi){
+      var cls='opt';
+      if(EXS.submitted){if(oi===item.a)cls+=' right';else if(oi===chosen)cls+=' wrong';}
+      else if(oi===chosen)cls+=' sel';
+      html+='<button type="button" class="'+cls+'" data-m="'+qi+'" data-o="'+oi+'"'+((!EXS.started||EXS.submitted)?' disabled':'')+'>'+String.fromCharCode(65+oi)+'. '+op+'</button>';
+    });
+    html+='</div>';
+    if(EXS.submitted){
+      html+='<div class="fb" style="display:block">'+(chosen===item.a?L.right:L.wrong+'<b>'+String.fromCharCode(65+item.a)+'. '+item.o[item.a]+'</b>')+'</div>';
+    }
+    html+='</div>';
+  });
+  document.getElementById('exMcq').innerHTML=html;
+}
+function renderWritten(){
+  var L=EXL[LANG],E=EXAM[LANG],dis=(!EXS.started||EXS.submitted)?' disabled':'';
+  var html='<h3>'+L.partB+'</h3>';
+  E.sa.forEach(function(q,qi){
+    html+='<div><p>'+q.t+'</p><textarea class="examta" data-sa="'+qi+'" placeholder="..."'+dis+'>'+EXS.sa[qi].replace(/</g,'&lt;')+'</textarea>';
+    if(EXS.submitted)html+='<div class="scheme">'+L.schemeT+q.scheme+'<br>'+L.selfL+'<input type="number" class="selfmark" data-sk="sa" data-si="'+qi+'" min="0" max="'+q.max+'" step="0.5" value="'+(EXS.self.sa[qi]===null?'':EXS.self.sa[qi])+'" placeholder="'+L.selfPh+' / '+q.max+'"></div>';
+    html+='</div>';
+  });
+  html+='<h3>'+L.partC+'</h3><p>'+E.dbq.ctx+'</p>';
+  html+='<div style="overflow-x:auto"><table><tr><th>'+L.tabX+'</th>'+DBQDATA.x.map(function(v){return '<td>'+v+'</td>';}).join('')+'</tr><tr><th>'+L.tabY+'</th>'+DBQDATA.y.map(function(v){return '<td>'+String(v).replace('.',',')+'</td>';}).join('')+'</tr></table></div>';
+  html+='<canvas class="sim" id="exChart" width="520" height="280" style="margin:10px auto 0;width:50%;min-width:280px"></canvas>';
+  E.dbq.parts.forEach(function(pt,pi){
+    html+='<p style="margin-top:14px">'+pt.t+' <b>['+pt.max+' '+L.marks+']</b></p><textarea class="examta" data-dbq="'+pi+'" placeholder="..."'+dis+'>'+EXS.dbq[pi].replace(/</g,'&lt;')+'</textarea>';
+    if(EXS.submitted)html+='<div class="scheme">'+L.schemeT+pt.scheme+'<br>'+L.selfL+'<input type="number" class="selfmark" data-sk="dbq" data-si="'+pi+'" min="0" max="'+pt.max+'" step="0.5" value="'+(EXS.self.dbq[pi]===null?'':EXS.self.dbq[pi])+'" placeholder="'+L.selfPh+' / '+pt.max+'"></div>';
+  });
+  document.getElementById('exWritten').innerHTML=html;
+  drawDbq();
+}
+function exSelfTotal(){var t=0;EXS.self.sa.concat(EXS.self.dbq).forEach(function(v){if(v!==null&&v!==''&&!isNaN(v))t+=+v;});return t;}
+function renderExResult(){
+  var L=EXL[LANG],el=document.getElementById('exResult');
+  document.getElementById('bSubmitExam').style.display=EXS.submitted?'none':'';
+  if(!EXS.submitted){el.innerHTML='';return;}
+  el.innerHTML='<div class="note"><span class="exscore">'+L.resT+'</span><br>'+L.mcqL+'<b>'+EXS.mcqScore+' / 10</b><br>'+L.selfL+'<b>'+exSelfTotal()+' / 14</b><br>'+L.totL+'<b>'+(EXS.mcqScore+exSelfTotal())+' / 24</b><br>'+L.timeL+'<b>'+exFmt(EXS.elapsed)+'</b></div>';
+}
+function drawDbq(){
+  var cv=document.getElementById('exChart');if(!cv)return;var g=cv.getContext('2d'),L=EXL[LANG];
+  var W=cv.width,H=cv.height,x0=52,x1=W-22,y0=16,y1=H-58;
+  g.clearRect(0,0,W,H);
+  var n=DBQDATA.x.length,ymax=100;
+  function X(i){return x0+(i/(n-1))*(x1-x0);} function Y(v){return y1-(v/ymax)*(y1-y0);}
+  g.strokeStyle='#e2e8f0';g.lineWidth=1;g.fillStyle='#475569';g.font='12px Arial';g.textAlign='center';
+  for(var gv=0;gv<=ymax;gv+=25){g.beginPath();g.moveTo(x0,Y(gv));g.lineTo(x1,Y(gv));g.stroke();g.fillText(gv,x0-14,Y(gv)+4);}
+  DBQDATA.x.forEach(function(v,i){g.fillText(v,X(i),y1+18);});
+  g.strokeStyle='#0f172a';g.lineWidth=2;g.beginPath();g.moveTo(x0,y0);g.lineTo(x0,y1);g.lineTo(x1,y1);g.stroke();
+  g.strokeStyle='#2563eb';g.lineWidth=3;g.beginPath();
+  DBQDATA.y.forEach(function(v,i){var px=X(i),py=Y(v);if(i===0)g.moveTo(px,py);else g.lineTo(px,py);});
+  g.stroke();
+  DBQDATA.y.forEach(function(v,i){var px=X(i),py=Y(v);g.fillStyle='#e4572e';g.beginPath();g.arc(px,py,5.5,0,6.29);g.fill();g.fillStyle='#0f172a';g.font='600 12px Arial';g.fillText(String(v),px,py-11);});
+  g.fillStyle='#0f172a';g.font='600 13.5px Be Vietnam Pro,Arial';g.fillText(L.cxT,(x0+x1)/2,H-14);
+  g.save();g.translate(18,(y0+y1)/2);g.rotate(-Math.PI/2);g.fillText(L.cyT,0,0);g.restore();
+}
+var exCard=document.getElementById('examCard');
+exCard.addEventListener('click',function(e){
+  if(e.target.id==='bStartExam'){EXS.started=Date.now();exSave();buildExam();return;}
+  if(e.target.id==='bResetExam'){
+    var ok=true;try{ok=window.confirm(EXL[LANG].confirmReset);}catch(err){ok=true;}
+    if(!ok)return;
+    EXS={started:null,mcq:{},sa:['',''],dbq:['','','',''],submitted:false,mcqScore:0,self:{sa:[null,null],dbq:[null,null,null,null]},elapsed:0};
+    if(EXTIMER)clearInterval(EXTIMER);exSave();buildExam();return;
+  }
+  var b=e.target.closest('.opt');
+  if(b&&!b.disabled&&EXS.started&&!EXS.submitted){
+    EXS.mcq[+b.dataset.m]=+b.dataset.o;exSave();renderMcq();
+    var dn=document.getElementById('exDone');if(dn)dn.textContent=exAnswered()+' / 16';
+  }
+});
+exCard.addEventListener('input',function(e){
+  var t=e.target;
+  if(t.dataset.sa!==undefined&&t.dataset.sa!==null&&t.classList.contains('examta')){EXS.sa[+t.dataset.sa]=t.value;exSave();}
+  else if(t.dataset.dbq!==undefined&&t.dataset.dbq!==null&&t.classList.contains('examta')){EXS.dbq[+t.dataset.dbq]=t.value;exSave();}
+  else if(t.classList.contains('selfmark')){
+    var v=t.value===''?null:+t.value;
+    if(t.dataset.sk==='sa')EXS.self.sa[+t.dataset.si]=v;else EXS.self.dbq[+t.dataset.si]=v;
+    exSave();renderExResult();return;
+  }else return;
+  var dn=document.getElementById('exDone');if(dn)dn.textContent=exAnswered()+' / 16';
+});
+document.getElementById('bSubmitExam').addEventListener('click',function(){
+  if(!EXS.started||EXS.submitted)return;
+  var blanks=16-exAnswered(),ok=true;
+  if(blanks>0){try{ok=window.confirm(EXL[LANG].confirmMsg.replace('{n}',blanks));}catch(err){ok=true;}}
+  if(!ok)return;
+  var E=EXAM[LANG],score=0;
+  E.mcq.forEach(function(item,qi){if(EXS.mcq[qi]===item.a)score++;});
+  EXS.mcqScore=score;EXS.submitted=true;EXS.elapsed=(Date.now()-EXS.started)/1000;
+  if(EXTIMER)clearInterval(EXTIMER);
+  exSave();buildExam();
+  document.getElementById('exResult').scrollIntoView({behavior:'smooth',block:'center'});
+});
+buildExam();
+document.getElementById('tabbar').addEventListener('click',function(e){
+  var b=e.target.closest?e.target.closest('[data-tab]'):null;
+  if(b&&b.dataset.tab==='t6')setTimeout(buildExam,0);
+});
+</script>
+<script>
+"use strict";
+/* ---------- Tab 2: receptor-ligand binding simulation (per combo) ---------- */
+var SPECSIM={lig:null,rec:null,ok:false,phase:'idle',t:0};
+function specSimPick(lig){SPECSIM={lig:lig,rec:null,ok:false,phase:'ready',t:0};}
+function specSimStart(lig,rec,ok){SPECSIM={lig:lig,rec:rec,ok:ok,phase:'approach',t:0};}
+var cvS=document.getElementById('cvSpec'), sg=cvS.getContext('2d');
+function glyph(g,x,y,r,fill){
+  sg.fillStyle=fill;sg.beginPath();
+  if(g==='●'){sg.arc(x,y,r,0,6.29);}
+  else if(g==='■'){sg.rect(x-r,y-r,2*r,2*r);}
+  else if(g==='▲'){sg.moveTo(x,y-r);sg.lineTo(x+r,y+r);sg.lineTo(x-r,y+r);sg.closePath();}
+  else{sg.moveTo(x,y-r);sg.lineTo(x+r,y);sg.lineTo(x,y+r);sg.lineTo(x-r,y);sg.closePath();}
+  sg.fill();
+}
+function specDraw(){
+  var dy=D().dyn; sg.clearRect(0,0,520,220);
+  sg.font='600 12px Be Vietnam Pro,Arial';
+  // membrane band
+  sg.fillStyle='#93c5fd';sg.fillRect(10,100,500,15);sg.fillStyle='#fcd34d';sg.fillRect(10,115,500,15);
+  sg.fillStyle='#475569';sg.fillText(LANG==='vi'?'Ngoài tế bào':'Outside the cell',14,24);
+  sg.fillText(LANG==='vi'?'Trong tế bào':'Inside the cell',14,208);
+  var ligObj=dy.specLigs.filter(function(x){return x.id===SPECSIM.lig;})[0];
+  var recObj=dy.specRecs.filter(function(x){return x.id===SPECSIM.rec;})[0];
+  // receptor (when a combo has started)
+  if(recObj){
+    var glow=SPECSIM.phase==='docked';
+    sg.fillStyle=glow?'#8b5cf6':'#7c3aed';
+    sg.beginPath();sg.roundRect(322,66,38,96,14);sg.fill();
+    glyph(recObj.site,341,80,10,'#fff');
+    sg.fillStyle='#0f172a';sg.fillText(recObj.name,300,208);
+    if(glow){sg.strokeStyle='#16a34a';sg.lineWidth=2.5;
+      for(var a=0;a<3;a++){sg.beginPath();sg.arc(341,112,26+a*9+((SPECSIM.t*2)%8),0,6.29);sg.globalAlpha=0.5-a*0.13;sg.stroke();}
+      sg.globalAlpha=1;
+      sg.fillStyle='#16a34a';
+      for(var gd=0;gd<6;gd++){var gy=140+((SPECSIM.t*1.7+gd*19)%50),gx2=318+((gd*29)%50);sg.beginPath();sg.arc(gx2,gy,4.5,0,6.29);sg.fill();}
+    }
+  }
+  // ligand
+  if(ligObj){
+    var lx=70,ly=76+Math.sin(SPECSIM.t/9)*4,show=true;
+    if(SPECSIM.phase==='approach'){
+      var pr=Math.min(1,SPECSIM.t/52); lx=70+(316-70)*pr; ly=76+(84-76)*pr;
+      if(pr>=1)SPECSIM.phase=SPECSIM.ok?'docked':'bounce';
+    } else if(SPECSIM.phase==='docked'){lx=322;ly=84;}
+    else if(SPECSIM.phase==='bounce'){
+      var bt=SPECSIM.t-52; lx=316-bt*3.4; ly=84-Math.sin(Math.min(3.1,bt/9))*20;
+      if(lx<26){SPECSIM.phase='gone';show=false;}
+    } else if(SPECSIM.phase==='gone'){show=false;}
+    if(show){glyph(ligObj.shape,lx,ly,14,'#e4572e');}
+    sg.fillStyle='#0f172a';sg.fillText(ligObj.name,14,48);
+  }
+  SPECSIM.t++;
+  requestAnimationFrame(specDraw);
+}
+specDraw();
+</script>
+<script>
+"use strict";
+/* ---------- Tab 5: epinephrine mechanism as a visual model (driven by the 5-step stepper) ---------- */
+var cvE=document.getElementById('cvEpi'), eg=cvE.getContext('2d');
+var EPIT=0, EPILAST=-1;
+function epiDraw(){
+  if(EPIIDX!==EPILAST){EPILAST=EPIIDX;EPIT=0;}
+  var st=EPIIDX, t=EPIT;
+  eg.clearRect(0,0,1080,400);
+  eg.font='600 12px Be Vietnam Pro,Arial';
+  // blood vessel band
+  eg.fillStyle='#fee2e2'; eg.fillRect(0,14,1080,62);
+  eg.fillStyle='#991b1b'; eg.fillText(LANG==='vi'?'MẠCH MÁU':'BLOOD VESSEL',16,36);
+  eg.fillStyle='#7c2d12'; eg.fillText('Epinephrine',16,66);
+  eg.fillStyle='#e4572e';
+  for(var i=0;i<3;i++){var bx=((t*1.3+i*340)%1180)-50; eg.beginPath(); eg.arc(bx,50,6.5,0,6.29); eg.fill();}
+  // liver cell
+  eg.fillStyle='#fff7ed'; eg.beginPath(); eg.roundRect(60,96,960,288,22); eg.fill();
+  eg.strokeStyle='#d6a35c'; eg.lineWidth=2; eg.stroke();
+  eg.fillStyle='#92400e'; eg.fillText(LANG==='vi'?'TẾ BÀO GAN':'LIVER CELL',76,120);
+  // GPCR in the cell membrane
+  eg.fillStyle='#7c3aed'; eg.beginPath(); eg.roundRect(284,74,34,64,12); eg.fill();
+  eg.fillStyle='#fff'; eg.font='700 11px Arial'; eg.fillText('▲',295,93);
+  eg.font='600 12px Be Vietnam Pro,Arial'; eg.fillStyle='#5b21b6'; eg.fillText('GPCR',282,158);
+  // the epinephrine molecule that binds
+  var ex,ey;
+  if(st===0){var pr=Math.min(1,t/42); ex=170+(300-170)*pr; ey=50+(63-50)*pr;}
+  else{ex=300; ey=63;}
+  eg.fillStyle='#e4572e'; eg.beginPath(); eg.arc(ex,ey,8,0,6.29); eg.fill();
+  // G protein (alpha subunit slides to the effector at step 2)
+  var gpOn=st>=1;
+  eg.fillStyle=gpOn?'#2563eb':'#93c5fd';
+  eg.beginPath(); eg.arc(352,168,13,0,6.29); eg.fill();
+  eg.beginPath(); eg.arc(375,177,10,0,6.29); eg.fill();
+  var ax=400; if(st===1)ax=400+Math.min(32,t*1.4); if(st>=2)ax=432;
+  eg.fillStyle=gpOn?'#1d4ed8':'#bfdbfe'; eg.beginPath(); eg.arc(ax,168,11,0,6.29); eg.fill();
+  eg.fillStyle='#1e3a8a'; eg.fillText('G protein',332,208);
+  // effector enzyme
+  eg.fillStyle=st>=2?'#0891b2':'#a5f3fc';
+  eg.beginPath(); eg.roundRect(452,146,64,44,12); eg.fill();
+  eg.fillStyle='#164e63'; eg.fillText(LANG==='vi'?'Enzyme hiệu ứng':'Effector enzyme',444,208);
+  // cAMP second messengers multiply
+  if(st>=2){
+    var nC=Math.min(26,4+(st-2)*8+Math.floor(t/16));
+    eg.fillStyle='#f59e0b';
+    for(var c=0;c<nC;c++){var cx2=548+((c*67)%290), cy2=142+((c*41)%76)+Math.sin(t/16+c)*3; eg.beginPath(); eg.arc(cx2,cy2,5,0,6.29); eg.fill();}
+    eg.fillStyle='#92400e'; eg.fillText('cAMP',548,132);
+  }
+  // kinase cascade switches on
+  for(var kk=0;kk<3;kk++){
+    var kx=580+kk*92, kOn=st>=4||(st===3&&t>kk*22);
+    eg.fillStyle=kOn?'#16a34a':'#bbf7d0';
+    eg.beginPath(); eg.roundRect(kx,238,58,34,10); eg.fill();
+  }
+  eg.fillStyle='#14532d'; eg.fillText(LANG==='vi'?'Chuỗi kinase':'Kinase cascade',580,294);
+  // glycogen store breaks down at the last step
+  var gx=905, gy=298;
+  var units=[[0,0],[20,-6],[40,0],[10,14],[30,16],[52,14],[-16,10],[62,-8],[24,30],[46,30]];
+  var gone=st>=4?Math.min(units.length,Math.floor(t/16)):0;
+  eg.fillStyle='#2563eb';
+  units.forEach(function(u,ui){ if(ui<gone)return; eg.beginPath(); eg.arc(gx+u[0],gy+u[1],9,0,6.29); eg.fill(); });
+  eg.fillStyle='#1e3a8a'; eg.fillText('Glycogen',876,354);
+  if(st>=4){
+    for(var gu=0;gu<gone;gu++){
+      var gt2=t-gu*16; if(gt2<0)continue;
+      var baseY=gy+units[gu][1], rise=gt2*2.2;
+      var yy=Math.max(50,baseY-rise), xx=gx+units[gu][0]+(baseY-rise<50?(rise-(baseY-50))*0.45:gt2*0.6);
+      eg.fillStyle='#2563eb'; eg.beginPath(); eg.arc(xx,yy,7,0,6.29); eg.fill();
+    }
+    if(gone>3){ eg.fillStyle='#991b1b'; eg.font='700 13px Be Vietnam Pro,Arial';
+      eg.fillText(LANG==='vi'?'Glucose được giải phóng vào máu ↑':'Glucose released into the blood ↑',700,36);
+      eg.font='600 12px Be Vietnam Pro,Arial'; }
+  }
+  EPIT++;
+  requestAnimationFrame(epiDraw);
+}
+epiDraw();
+</script>
+<script>
+"use strict";
+function freezeTop(){
+  var t=document.querySelector('.top'); if(!t)return;
+  var h=t.offsetHeight;
+  document.body.style.paddingTop=h+'px';
+  document.documentElement.style.scrollPaddingTop=(h+10)+'px';
+}
+window.addEventListener('resize',freezeTop);
+document.querySelector('.lang').addEventListener('click',function(){setTimeout(freezeTop,60);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){freezeTop();});
+freezeTop();
+</script>
+</body>
+</html>
