@@ -160,11 +160,11 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 <section class="tab on" id="t1">
 <div class="card">
 <h2 data-t="s1h">Sơ đồ động - Hành trình của một tín hiệu hoá học</h2>
-<p data-t="s1p">Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích. Chọn một trong ba kiểu truyền tín hiệu dưới đây và quan sát: chất di chuyển giữa các vị trí ra sao, gắn vào đâu, và biến đổi điều gì bên trong tế bào đích.</p>
+<p data-t="s1p">Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích.</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
 <button type="button" class="btn on" id="mHorm" data-t="mHorm">Hormone theo dòng máu</button>
-<button type="button" class="btn secondary" id="mSyn" data-t="mSyn">Chất dẫn truyền qua khe synapse</button>
 <button type="button" class="btn secondary" id="mSter" data-t="mSter">Hormone steroid vào trong tế bào</button>
+<button type="button" class="btn secondary" id="mSyn" data-t="mSyn">Chất dẫn truyền qua khe synapse</button>
 </div>
 <div class="t1cols">
 <div id="modeInfo" style="display:flex;flex-direction:column;gap:10px;height:100%"></div>
@@ -182,7 +182,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 <section class="tab" id="t2">
 <div class="card">
 <h2 data-t="s2ah">C2.1.1 HL - Thụ thể: protein có vị trí gắn đặc hiệu</h2>
-<p data-t="s2ap">Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định. Chọn một phân tử tín hiệu rồi bấm vào thụ thể mà em dự đoán nó sẽ gắn; chỉ khi hình dạng khớp nhau, tín hiệu mới được khởi phát.</p>
+<p data-t="s2ap">Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định.</p>
 <div class="grid2">
 <div>
 <p><b data-t="specPickL">Chọn phân tử tín hiệu:</b></p>
@@ -214,7 +214,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 <section class="tab" id="t3">
 <div class="card">
 <h2 data-t="s3ah">C2.1.5 HL - Tác động tại chỗ và tác động xa</h2>
-<p data-t="s3ap">Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc. Bấm Chạy và so sánh hai hành trình.</p>
+<p data-t="s3ap">Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc.</p>
 <canvas class="sim" id="cvRace" width="1080" height="300"></canvas>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
 <button type="button" class="btn" id="bRaceGo" data-t="bRaceGo">▶ Chạy cả hai</button>
@@ -224,7 +224,6 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 </div>
 <div class="card">
 <h2 data-t="s3bh">C2.1.6 HL - Thụ thể xuyên màng và thụ thể nội bào</h2>
-<p data-t="s3bp">Bấm vào từng thành phần trong hình để đối chiếu hai loại thụ thể: vị trí, bản chất của phân tử tín hiệu, và sự phân bố amino acid ưa nước / kị nước trên thụ thể.</p>
 <div style="position:relative">
 <svg id="rxSvg" viewBox="0 0 1080 340" style="width:100%;height:auto;display:block;background:#f8fafc;border:1.5px solid var(--line);border-radius:14px"></svg>
 <div id="rxTip" style="position:absolute;display:none;pointer-events:none;background:#0f172a;color:#fff;padding:8px 11px;border-radius:10px;font-size:12.5px;line-height:1.5;max-width:255px;z-index:6;box-shadow:0 6px 18px rgba(15,23,42,.25)"></div>
@@ -237,7 +236,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 <section class="tab" id="t4">
 <div class="card">
 <h2 data-t="s4ah">C2.1.7 HL - Khởi phát đường truyền tín hiệu: thác khuếch đại</h2>
-<p data-t="s4ap">Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại. Bấm Chạy và xem các con số nhân lên.</p>
+<p data-t="s4ap">Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại.</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
 <button type="button" class="btn" id="bCasc" data-t="bCasc">▶ Chạy thác khuếch đại</button>
 </div>
@@ -246,13 +245,17 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 </div>
 <div class="card">
 <h2 data-t="s4bh">C2.1.9 HL - Thụ thể liên kết G protein (GPCR)</h2>
-<p data-t="s4bp">GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt. Bấm Gắn phân tử tín hiệu để chạy cơ chế.</p>
-<canvas class="sim" id="cvGPCR" width="1080" height="420"></canvas>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-<button type="button" class="btn" id="bGpGo" data-t="bGpGo">▶ Gắn phân tử tín hiệu vào GPCR</button>
-<button type="button" class="btn secondary" id="bGpReset" data-t="bGpReset">↺ Đặt lại</button>
+<p data-t="s4bp">GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<button type="button" class="btn secondary" id="bGpPrev" data-t="bPrev">← Bước trước</button>
+<button type="button" class="btn" id="bGpNext" data-t="bNext">Bước tiếp →</button>
+<button type="button" class="btn secondary" id="bGpReset" data-t="bReset">↺ Đặt lại</button>
 </div>
-<p style="margin-top:8px"><b id="gpStep"></b></p>
+<div class="note" id="gpStep"></div>
+<div style="position:relative">
+<canvas class="sim" id="cvGPCR" width="1080" height="430" style="margin-top:12px"></canvas>
+<div id="gpTip" style="position:absolute;display:none;pointer-events:none;background:#0f172a;color:#fff;padding:8px 11px;border-radius:10px;font-size:12.5px;line-height:1.5;max-width:255px;z-index:6;box-shadow:0 6px 18px rgba(15,23,42,.25)"></div>
+</div>
 <p class="small" data-t="s4bnote">Ví dụ phân tử tín hiệu của GPCR: epinephrine, glucagon, serotonin, nhiều hormone peptide và chất dẫn truyền. Ở người có hàng trăm loại GPCR khác nhau.</p>
 </div>
 </section>
@@ -261,7 +264,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 <section class="tab" id="t5">
 <div class="card">
 <h2 data-t="s5ah">C2.1.10 HL + C3.1.12 SL - Epinephrine: tín hiệu "chiến đấu hay bỏ chạy"</h2>
-<p data-t="s5ap">Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai. Lật từng bước của cơ chế rồi xem toàn cảnh tác động lên cơ thể.</p>
+<p data-t="s5ap">Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai.</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
 <button type="button" class="btn secondary" id="bEpiPrev" data-t="bPrev">← Bước trước</button>
 <button type="button" class="btn" id="bEpiNext" data-t="bNext">Bước tiếp →</button>
@@ -274,7 +277,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 </div>
 <div class="card">
 <h2 data-t="s5bh">C2.1.11 HL - Insulin: thụ thể có hoạt tính tyrosine kinase</h2>
-<p data-t="s5bp">Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose. Lật từng bước để xem mô hình cơ chế.</p>
+<p data-t="s5bp">Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose.</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
 <button type="button" class="btn secondary" id="bInsPrev" data-t="bPrev">← Bước trước</button>
 <button type="button" class="btn" id="bInsNext" data-t="bNext">Bước tiếp →</button>
@@ -285,7 +288,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 20px 30px;color:var(--muted);fon
 </div>
 <div class="card">
 <h2 data-t="s5ch">C3.1.11 SL - Melatonin và nhịp sinh học ngày - đêm</h2>
-<p data-t="s5cp">Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế. Kéo thanh giờ trong ngày và quan sát cả ba mắt xích thay đổi cùng nhau.</p>
+<p data-t="s5cp">Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế.</p>
 <canvas class="sim" id="cvMel" width="1080" height="300"></canvas>
 <div class="ctl"><label><span data-t="melHourL">🕐 Giờ trong ngày</span><span id="vHour">22:00</span></label>
 <input type="range" id="rHour" min="0" max="23" value="22"></div>
@@ -316,11 +319,11 @@ var I18N={
 vi:{
 title:"Tín hiệu hoá học",tab1:"1 · Sơ đồ động",tab2:"2 · Thụ thể & phân tử tín hiệu",tab3:"3 · Phạm vi & loại thụ thể",tab4:"4 · Truyền tín hiệu & GPCR",tab5:"5 · Ba cơ chế mẫu",tab6:"6 · Bài kiểm tra thử",
 s1h:"Sơ đồ động - Hành trình của một tín hiệu hoá học",
-s1p:"Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích. Chọn một trong ba kiểu truyền tín hiệu dưới đây và quan sát: chất di chuyển giữa các vị trí ra sao, gắn vào đâu, và biến đổi điều gì bên trong tế bào đích.",
+s1p:"Một tín hiệu hoá học luôn đi qua cùng một hành trình: được tiết ra từ tế bào nguồn, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu rồi khởi phát một chuỗi biến đổi bên trong tế bào đích.",
 mHorm:"Hormone theo dòng máu",mSyn:"Chất dẫn truyền qua khe synapse",mSter:"Hormone steroid vào trong tế bào",
 s1bh:"Năm bước của một hành trình tín hiệu",s1bp:"Bấm vào từng bước để xem nội dung cốt lõi.",
 s2ah:"C2.1.1 HL - Thụ thể: protein có vị trí gắn đặc hiệu",
-s2ap:"Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định. Chọn một phân tử tín hiệu rồi bấm vào thụ thể mà em dự đoán nó sẽ gắn; chỉ khi hình dạng khớp nhau, tín hiệu mới được khởi phát.",
+s2ap:"Thụ thể là một protein có vị trí gắn với hình dạng khớp đúng một phân tử tín hiệu nhất định.",
 specPickL:"Chọn phân tử tín hiệu:",specPickR:"Chọn thụ thể",
 s2anote:"Việc gắn là thuận nghịch: phân tử tín hiệu gắn vào rồi lại rời ra, nên tín hiệu tắt được khi phân tử tín hiệu biến mất.",
 s2bh:"C2.1.3 HL - Bốn nhóm phân tử tín hiệu ở động vật",
@@ -328,26 +331,26 @@ s2ch:"C2.1.4 HL - Sự đa dạng hoá học của hormone và chất dẫn truy
 s2cp:"Mọi phân tử tín hiệu đều có chung các tính chất: được tiết ra từ một tế bào, di chuyển tới tế bào đích, gắn vào thụ thể đặc hiệu và gây đáp ứng - dù bản chất hoá học của chúng rất khác nhau.",
 s2ch1:"Hormone - ba nhóm hoá học",s2ch2:"Chất dẫn truyền thần kinh - bốn nhóm hoá học",
 s3ah:"C2.1.5 HL - Tác động tại chỗ và tác động xa",
-s3ap:"Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc. Bấm Chạy và so sánh hai hành trình.",
+s3ap:"Chất dẫn truyền chỉ cần vượt qua khe synapse cực hẹp nên tác động nhanh và khu trú; hormone phải theo dòng máu đi khắp cơ thể nên chậm hơn, bị pha loãng, nhưng đến được rất nhiều tế bào đích cùng lúc.",
 bRaceGo:"▶ Chạy cả hai",bRaceReset:"↺ Đặt lại",
 s3bh:"C2.1.6 HL - Thụ thể xuyên màng và thụ thể nội bào",
 s3bp:"Bấm vào từng thành phần trong hình để đối chiếu hai loại thụ thể: vị trí, bản chất của phân tử tín hiệu, và sự phân bố amino acid ưa nước / kị nước trên thụ thể.",
 s4ah:"C2.1.7 HL - Khởi phát đường truyền tín hiệu: thác khuếch đại",
-s4ap:"Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại. Bấm Chạy và xem các con số nhân lên.",
+s4ap:"Khi phân tử tín hiệu gắn vào thụ thể, tín hiệu được chuyển tiếp qua một chuỗi phân tử bên trong tế bào. Mỗi phân tử ở một tầng lại hoạt hoá nhiều phân tử ở tầng sau, nên một phân tử tín hiệu duy nhất có thể tạo ra đáp ứng rất lớn - đó là thác khuếch đại.",
 bCasc:"▶ Chạy thác khuếch đại",
 s4bh:"C2.1.9 HL - Thụ thể liên kết G protein (GPCR)",
-s4bp:"GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt. Bấm Gắn phân tử tín hiệu để chạy cơ chế.",
+s4bp:"GPCR là thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng. Khi phân tử tín hiệu gắn vào, GPCR đổi hình dạng và hoạt hoá một G protein ở mặt trong màng: tiểu đơn vị α nhả GDP, nhận GTP, tách ra và bật phân tử hiệu ứng. Khi α thuỷ phân GTP thành GDP, tín hiệu tắt.",
 bGpGo:"▶ Gắn phân tử tín hiệu vào GPCR",bGpReset:"↺ Đặt lại",
 s4bnote:"Ví dụ phân tử tín hiệu của GPCR: epinephrine, glucagon, serotonin, nhiều hormone peptide và chất dẫn truyền. Ở người có hàng trăm loại GPCR khác nhau.",
 s5ah:"C2.1.10 HL + C3.1.12 SL - Epinephrine: tín hiệu 'chiến đấu hay bỏ chạy'",
-s5ap:"Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai. Lật từng bước của cơ chế rồi xem toàn cảnh tác động lên cơ thể.",
+s5ap:"Epinephrine (adrenaline) do tuyến thượng thận tiết ra khi cơ thể cần hoạt động mạnh. Nó gắn vào thụ thể liên kết G protein trên nhiều loại tế bào, dùng cAMP làm chất truyền tin thứ hai.",
 bPrev:"← Bước trước",bNext:"Bước tiếp →",bReset:"↺ Đặt lại",s5afxh:"Tác động của epinephrine lên cơ thể",
 s5anos:"Góc NOS: 'adrenaline' (tiếng Latin: ad = ở tại, ren = thận) và 'epinephrine' (tiếng Hy Lạp cổ: epi = ở trên, nephros = thận) đều chỉ hormone của tuyến nằm trên thận - hai tên gọi cùng tồn tại ở các vùng khác nhau trên thế giới là một ví dụ về hợp tác quốc tế trong khoa học.",
 s5bh:"C2.1.11 HL - Insulin: thụ thể có hoạt tính tyrosine kinase",
-s5bp:"Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose. Lật từng bước để xem mô hình cơ chế.",
+s5bp:"Insulin do tế bào tuyến tuỵ tiết ra khi nồng độ glucose trong máu cao. Thụ thể insulin là một thụ thể xuyên màng có hoạt tính kinase: khi insulin gắn vào, các gốc tyrosine ở phần trong tế bào được phosphoryl hoá, khởi phát chuỗi phản ứng mà đích cuối là đưa các túi chứa protein vận chuyển glucose ra hợp nhất với màng, giúp tế bào hấp thu glucose.",
 bInsGo:"▶ Tiết insulin",bInsReset:"↺ Đặt lại",
 s5ch:"C3.1.11 SL - Melatonin và nhịp sinh học ngày - đêm",
-s5cp:"Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế. Kéo thanh giờ trong ngày và quan sát cả ba mắt xích thay đổi cùng nhau.",
+s5cp:"Nhân trên chéo thị giác (SCN) ở vùng dưới đồi nhận thông tin ánh sáng từ mắt và điều khiển tuyến tùng: khi trời tối, tuyến tùng tiết melatonin gây buồn ngủ; khi có ánh sáng, melatonin bị ức chế.",
 melHourL:"🕐 Giờ trong ngày",
 dyn:{
 legend:[["#e4572e","Phân tử tín hiệu (phân tử tín hiệu)"],["#7c3aed","Thụ thể"],["#2563eb","Màng tế bào"],["#f59e0b","Chất truyền tin thứ hai (cAMP)"],["#16a34a","Đáp ứng của tế bào"]],
@@ -384,13 +387,13 @@ catRows:[
 ["Ion Ca²⁺","Được giải phóng trong tế bào (từ lưới nội chất / ngoài tế bào)","Ngay trong tế bào chất của chính tế bào đó","Trong một tế bào","Ca²⁺ gây co cơ, gây phóng thích chất dẫn truyền"]],
 ligDef:"Thuật ngữ cần nhớ - Phân tử tín hiệu: phân tử tín hiệu gắn vào vị trí gắn đặc hiệu trên thụ thể.",
 hormTiles:[
-{t:"Amin",d:"Phân tử nhỏ dẫn xuất từ amino acid. Ví dụ: epinephrine, thyroxine. Ưa nước - gắn vào thụ thể trên màng."},
+{t:"Amine",d:"Phân tử nhỏ dẫn xuất từ amino acid. Ví dụ: epinephrine, thyroxine. Ưa nước - gắn vào thụ thể trên màng."},
 {t:"Peptide / protein",d:"Chuỗi amino acid dài ngắn khác nhau. Ví dụ: insulin, glucagon. Ưa nước - không qua được màng, gắn vào thụ thể xuyên màng."},
 {t:"Steroid",d:"Cấu trúc vòng dẫn xuất từ cholesterol. Ví dụ: testosterone, oestrogen, cortisol. Kị nước - xuyên qua màng, gắn vào thụ thể nội bào."}],
 ntTiles:[
 {t:"Amino acid",d:"Ví dụ: glutamate (kích thích), GABA (ức chế) - các chất dẫn truyền phổ biến nhất ở não."},
 {t:"Peptide",d:"Chuỗi amino acid ngắn. Ví dụ: endorphin, chất P."},
-{t:"Amin",d:"Ví dụ: serotonin, dopamine, acetylcholine thuộc nhóm có nitrogen - nhiều thuốc tác động lên hệ này."},
+{t:"Amine",d:"Ví dụ: serotonin, dopamine, acetylcholine thuộc nhóm có nitrogen - nhiều thuốc tác động lên hệ này."},
 {t:"Khí NO",d:"Nitric oxide: khí hoà tan, khuếch tán thẳng qua màng, tác động rất ngắn và tại chỗ."}],
 raceL:{synT:"Thời gian di chuyển: ~1 mili giây",horT:"Thời gian di chuyển: ≈ {m} phút",syn:"Khe synapse (~20 nm)",hor:"Theo máu tới tế bào đích ở xa",idle:"Bấm Chạy cả hai để so sánh tốc độ và phạm vi.",synDone:"Chất dẫn truyền: đã tới đích - nhanh, khu trú đúng một tế bào.",mid:"Hormone vẫn đang theo dòng máu... và bị pha loãng dần.",done:"Hormone: đã tới đích - chậm hơn nhiều, nhưng cùng lúc đến được vô số tế bào đích trong cơ thể."},
 rxInfo0:"Bấm vào từng thành phần trong hình để xem giải thích.",
@@ -408,6 +411,14 @@ cascDefs:[
 {t:"Chuyển tiếp tín hiệu",d:"Chuỗi biến đổi từ lúc phân tử tín hiệu gắn vào thụ thể đến khi tế bào đáp ứng."},
 {t:"Thác tín hiệu",d:"Chuỗi các phân tử hoạt hoá lẫn nhau nối tiếp; mỗi tầng nhân số lượng lên nên đáp ứng cuối rất lớn."}],
 cascNote:"1 phân tử tín hiệu → đáp ứng cuối lớn gấp hàng chục lần: đó là lí do một lượng hormone cực nhỏ trong máu vẫn điều khiển được cả cơ thể.",
+gpSteps:[
+{t:"Trạng thái nghỉ",d:"Chưa có phân tử tín hiệu: GPCR đứng yên trên màng. Ở mặt trong, G protein gồm ba tiểu đơn vị α, β, γ đang liên kết với nhau; tiểu đơn vị α mang GDP nên G protein bất hoạt."},
+{t:"Gắn tín hiệu",d:"Phân tử tín hiệu ưa nước (ví dụ epinephrine) gắn vào vị trí gắn đặc hiệu ở mặt ngoài của GPCR."},
+{t:"Biến đổi cấu hình",d:"Việc gắn phân tử tín hiệu làm GPCR đổi hình dạng; phần trong tế bào của thụ thể tác động lên G protein đang liên kết ở mặt trong màng."},
+{t:"Trao đổi GDP thành GTP",d:"G protein nhả GDP ra khỏi tiểu đơn vị α và gắn GTP vào thay thế - G protein được kích hoạt."},
+{t:"Phân tách G protein",d:"Tiểu đơn vị α mang GTP tách khỏi thụ thể và khỏi cặp βγ, rồi trượt dọc mặt trong của màng."},
+{t:"Kích hoạt enzyme thực thi và tạo cAMP",d:"Tiểu đơn vị α-GTP tới hoạt hoá enzyme thực thi trên màng (ví dụ adenylyl cyclase); enzyme này chuyển ATP thành cAMP - chất truyền tin thứ hai lan ra trong tế bào chất và khởi phát đáp ứng của tế bào."}],
+gpHover:{lig:["Phân tử tín hiệu (epinephrine)","Hormone ưa nước do tuyến thượng thận tiết ra; gắn vào vị trí gắn ở mặt ngoài GPCR trên màng tế bào gan và tế bào cơ."],gpcr:["GPCR - thụ thể liên kết G protein","Thụ thể xuyên màng có 7 đoạn xoắn α xuyên qua màng: mặt ngoài gắn phân tử tín hiệu, mặt trong liên kết với G protein."],ga:["Tiểu đơn vị α của G protein","Mang GDP khi nghỉ và GTP khi hoạt động; sau khi được kích hoạt, nó tách ra và trượt dọc màng tới enzyme thực thi."],gbg:["Cặp tiểu đơn vị βγ","Hai tiểu đơn vị luôn đi cùng nhau; ở lại gần thụ thể khi α tách ra, sẵn sàng tái hợp với α khi tín hiệu tắt."],gdp:["GDP","Guanosine diphosphate: gắn vào tiểu đơn vị α khi G protein bất hoạt - trạng thái tắt của công tắc."],gtp:["GTP","Guanosine triphosphate: thay thế GDP trên tiểu đơn vị α để bật G protein; khi GTP bị thuỷ phân trở lại thành GDP, tín hiệu tắt."],eff:["Enzyme thực thi (adenylyl cyclase)","Enzyme neo trên màng, được tiểu đơn vị α-GTP hoạt hoá; xúc tác chuyển ATP thành cAMP."],camp:["cAMP - chất truyền tin thứ hai","Phân tử nhỏ nội bào do adenylyl cyclase tạo ra; khuếch tán trong tế bào chất, kích hoạt chuỗi kinase và khuếch đại tín hiệu."],atp:["ATP","Nguyên liệu mà adenylyl cyclase chuyển hoá thành cAMP."],mem:["Màng tế bào","Lớp kép phospholipid nơi GPCR và enzyme thực thi neo giữ; tiểu đơn vị α trượt dọc mặt trong của màng."]},
 gpL:{lig:"Phân tử tín hiệu",rec:"GPCR (7 đoạn xuyên màng)",gp:"G protein",al:"α + GTP",eff:"Phân tử hiệu ứng",camp:"cAMP",steps:["Trạng thái nghỉ: G protein mang GDP, chưa hoạt động.","Phân tử tín hiệu gắn vào GPCR - thụ thể đổi hình dạng.","GPCR hoạt hoá G protein: tiểu đơn vị α nhả GDP, nhận GTP.","Tiểu đơn vị α mang GTP tách ra, trượt dọc màng tới phân tử hiệu ứng và bật nó.","Phân tử hiệu ứng tạo chất truyền tin thứ hai (cAMP) - tín hiệu được khuếch đại. Khi α thuỷ phân GTP → GDP, mọi thứ tắt và tái hợp."]},
 epiSteps:[
 {t:"Bước 1 · Tiết ra",d:"Tuyến thượng thận (phần tuỷ) tiết epinephrine vào máu khi cơ thể căng thẳng hoặc cần vận động mạnh."},
@@ -430,11 +441,11 @@ melL:{scn:"SCN nhận ánh sáng",pin:"Tuyến tùng tiết melatonin",low:"Mela
 en:{
 title:"Chemical signalling",tab1:"1 · Animated diagram",tab2:"2 · Receptors & signalling molecules",tab3:"3 · Range & receptor types",tab4:"4 · Transduction & GPCRs",tab5:"5 · Model mechanisms",tab6:"6 · Practice test",
 s1h:"Animated diagram - The journey of a chemical signal",
-s1p:"Every chemical signal follows the same journey: it is released from a source cell, travels to a target cell, binds a specific receptor and sets off a chain of changes inside the target cell. Choose one of the three signalling types below and watch how the substance moves between places, where it binds, and what it changes inside the target cell.",
+s1p:"Every chemical signal follows the same journey: it is released from a source cell, travels to a target cell, binds a specific receptor and sets off a chain of changes inside the target cell.",
 mHorm:"Hormone carried by the blood",mSyn:"Neurotransmitter across a synapse",mSter:"Steroid hormone into the cell",
 s1bh:"Five steps of a signalling journey",s1bp:"Click each step to see the core content.",
 s2ah:"C2.1.1 HL - Receptors: proteins with specific binding sites",
-s2ap:"A receptor is a protein with a binding site whose shape matches one particular signalling molecule - that molecule is called its ligand. Pick a ligand, then click the receptor you predict it will bind; only when the shapes match is a signal initiated.",
+s2ap:"A receptor is a protein with a binding site whose shape matches one particular signalling molecule - that molecule is called its ligand.",
 specPickL:"Pick a ligand:",specPickR:"Choose a receptor",
 s2anote:"Binding is reversible: the ligand binds and later leaves, so the signal switches off when the ligand disappears.",
 s2bh:"C2.1.3 HL - Four groups of signalling molecules in animals",
@@ -442,26 +453,26 @@ s2ch:"C2.1.4 HL - Chemical diversity of hormones and neurotransmitters",
 s2cp:"All signalling molecules share the same properties: they are released by one cell, travel to a target cell, bind a specific receptor and cause a response - even though their chemistry differs greatly.",
 s2ch1:"Hormones - three chemical groups",s2ch2:"Neurotransmitters - four chemical groups",
 s3ah:"C2.1.5 HL - Localized and distant effects",
-s3ap:"A neurotransmitter only has to cross the extremely narrow synaptic cleft, so its effect is fast and localized; a hormone must travel in the blood around the whole body, so it is slower and gets diluted, but it can reach very many target cells at once. Press Run and compare the two journeys.",
+s3ap:"A neurotransmitter only has to cross the extremely narrow synaptic cleft, so its effect is fast and localized; a hormone must travel in the blood around the whole body, so it is slower and gets diluted, but it can reach very many target cells at once.",
 bRaceGo:"▶ Run both",bRaceReset:"↺ Reset",
 s3bh:"C2.1.6 HL - Transmembrane and intracellular receptors",
 s3bp:"Click each component in the diagram to compare the two receptor types: position, the nature of the ligand, and the distribution of hydrophilic / hydrophobic amino acids on the receptor.",
 s4ah:"C2.1.7 HL - Initiation of signal transduction: the amplification cascade",
-s4ap:"When a ligand binds its receptor, the signal is relayed through a chain of molecules inside the cell (transduction). Each molecule at one level activates many molecules at the next, so a single ligand can produce a very large response - the signalling cascade. Press Run and watch the numbers multiply.",
+s4ap:"When a ligand binds its receptor, the signal is relayed through a chain of molecules inside the cell (transduction). Each molecule at one level activates many molecules at the next, so a single ligand can produce a very large response - the signalling cascade.",
 bCasc:"▶ Run the amplification cascade",
 s4bh:"C2.1.9 HL - G protein-coupled receptors (GPCRs)",
-s4bp:"A GPCR is a transmembrane receptor with 7 alpha-helical segments crossing the membrane. When a ligand binds, the GPCR changes shape and activates a G protein at the inner surface: the alpha subunit releases GDP, takes up GTP, separates and switches on an effector molecule. When the alpha subunit hydrolyses GTP back to GDP, the signal switches off. Press Bind ligand to run the mechanism.",
+s4bp:"A GPCR is a transmembrane receptor with 7 alpha-helical segments crossing the membrane. When a ligand binds, the GPCR changes shape and activates a G protein at the inner surface: the alpha subunit releases GDP, takes up GTP, separates and switches on an effector molecule. When the alpha subunit hydrolyses GTP back to GDP, the signal switches off.",
 bGpGo:"▶ Bind ligand to the GPCR",bGpReset:"↺ Reset",
 s4bnote:"Example GPCR ligands: epinephrine, glucagon, serotonin, many peptide hormones and neurotransmitters. Humans have hundreds of different GPCRs.",
 s5ah:"C2.1.10 HL + C3.1.12 SL - Epinephrine: the 'fight or flight' signal",
-s5ap:"Epinephrine (adrenaline) is secreted by the adrenal glands when the body needs vigorous activity. It binds G protein-coupled receptors on many cell types and uses cAMP as second messenger. Step through the mechanism, then survey its effects on the whole body.",
+s5ap:"Epinephrine (adrenaline) is secreted by the adrenal glands when the body needs vigorous activity. It binds G protein-coupled receptors on many cell types and uses cAMP as second messenger.",
 bPrev:"← Previous step",bNext:"Next step →",bReset:"↺ Reset",s5afxh:"Effects of epinephrine on the body",
 s5anos:"NOS corner: 'adrenaline' (Latin: ad = at, ren = kidney) and 'epinephrine' (ancient Greek: epi = above, nephros = kidney) both name the hormone of the gland sitting on the kidney - the two terms persisting in different parts of the world are an example of international cooperation in science.",
 s5bh:"C2.1.11 HL - Insulin: a receptor with tyrosine kinase activity",
-s5bp:"Insulin is secreted by pancreas cells when blood glucose is high. The insulin receptor is a transmembrane receptor with kinase activity: when insulin binds, tyrosine residues on the intracellular part are phosphorylated, starting a reaction chain whose end point is moving vesicles containing glucose transporters to the plasma membrane so the cell can take up glucose. Step through the steps to see the mechanism model.",
+s5bp:"Insulin is secreted by pancreas cells when blood glucose is high. The insulin receptor is a transmembrane receptor with kinase activity: when insulin binds, tyrosine residues on the intracellular part are phosphorylated, starting a reaction chain whose end point is moving vesicles containing glucose transporters to the plasma membrane so the cell can take up glucose.",
 bInsGo:"▶ Secrete insulin",bInsReset:"↺ Reset",
 s5ch:"C3.1.11 SL - Melatonin and the day-night circadian rhythm",
-s5cp:"The suprachiasmatic nuclei (SCN) in the hypothalamus receive light information from the eyes and control the pineal gland: in darkness the pineal gland secretes melatonin, causing sleepiness; light suppresses melatonin. Drag the hour slider and watch all three links change together.",
+s5cp:"The suprachiasmatic nuclei (SCN) in the hypothalamus receive light information from the eyes and control the pineal gland: in darkness the pineal gland secretes melatonin, causing sleepiness; light suppresses melatonin.",
 melHourL:"🕐 Hour of the day",
 dyn:{
 legend:[["#e4572e","Ligand (signalling molecule)"],["#7c3aed","Receptor"],["#2563eb","Cell membrane"],["#f59e0b","Second messenger (cAMP)"],["#16a34a","Cell response"]],
@@ -522,6 +533,14 @@ cascDefs:[
 {t:"Transduction",d:"The whole chain of changes from ligand binding at the receptor to the cell's response."},
 {t:"Signalling cascade",d:"A chain of molecules activating each other in sequence; each level multiplies the number, so the final response is huge."}],
 cascNote:"1 ligand → a final response tens of times larger: that is why a tiny amount of hormone in the blood can control the whole body.",
+gpSteps:[
+{t:"Resting state",d:"No signalling molecule yet: the GPCR sits quietly in the membrane. On the inner side, the G protein - three subunits α, β and γ joined together - carries GDP on its α subunit, so it is inactive."},
+{t:"Ligand binding",d:"A hydrophilic signalling molecule (for example epinephrine) binds the specific binding site on the outer face of the GPCR."},
+{t:"Conformational change",d:"Binding makes the GPCR change shape; its intracellular part acts on the G protein attached at the inner face of the membrane."},
+{t:"GDP exchanged for GTP",d:"The G protein releases GDP from the α subunit and takes up GTP instead - the G protein is now activated."},
+{t:"The G protein separates",d:"The α subunit carrying GTP separates from the receptor and from the βγ pair, and slides along the inner face of the membrane."},
+{t:"Effector activation and cAMP",d:"The α-GTP subunit switches on a membrane effector enzyme (for example adenylyl cyclase); the enzyme converts ATP into cAMP - the second messenger spreads through the cytoplasm and starts the cell's response."}],
+gpHover:{lig:["Signalling molecule (epinephrine)","A hydrophilic hormone from the adrenal gland; binds the binding site on the outer face of the GPCR of liver and muscle cells."],gpcr:["GPCR - G protein-coupled receptor","A transmembrane receptor with 7 alpha-helical segments crossing the membrane: its outer face binds the signalling molecule, its inner face couples to a G protein."],ga:["G protein α subunit","Carries GDP at rest and GTP when active; once activated it separates and slides along the membrane to the effector enzyme."],gbg:["The βγ subunit pair","The two subunits always move together; they stay near the receptor when α leaves, ready to rejoin it when the signal switches off."],gdp:["GDP","Guanosine diphosphate: bound to the α subunit while the G protein is inactive - the OFF state of the switch."],gtp:["GTP","Guanosine triphosphate: replaces GDP on the α subunit to switch the G protein ON; when GTP is hydrolysed back to GDP, the signal switches off."],eff:["Effector enzyme (adenylyl cyclase)","A membrane enzyme switched on by the α-GTP subunit; it catalyses the conversion of ATP into cAMP."],camp:["cAMP - second messenger","A small intracellular molecule made by adenylyl cyclase; it diffuses through the cytoplasm, activates a kinase cascade and amplifies the signal."],atp:["ATP","The raw material that adenylyl cyclase converts into cAMP."],mem:["Cell membrane","The phospholipid bilayer in which the GPCR and the effector enzyme are anchored; the α subunit slides along its inner face."]},
 gpL:{lig:"Ligand",rec:"GPCR (7 membrane spans)",gp:"G protein",al:"α + GTP",eff:"Effector molecule",camp:"cAMP",steps:["Resting state: the G protein carries GDP and is inactive.","A ligand binds the GPCR - the receptor changes shape.","The GPCR activates the G protein: the alpha subunit releases GDP and takes up GTP.","The alpha subunit with GTP separates and slides along the membrane to the effector molecule and switches it on.","The effector makes a second messenger (cAMP) - the signal is amplified. When alpha hydrolyses GTP → GDP, everything switches off and reassembles."]},
 epiSteps:[
 {t:"Step 1 · Release",d:"The adrenal glands (medulla) secrete epinephrine into the blood when the body is stressed or needs vigorous activity."},
@@ -672,7 +691,7 @@ function buildModeInfo(){
   }).join('');
 }
 function renderAll(){
-  applyStatic(); buildChips(); buildModeInfo(); buildSpec(); buildCat(); buildChem(); buildRx(); buildCasc(); buildEpi(); if(window.buildIns)buildIns();
+  applyStatic(); buildChips(); buildModeInfo(); buildSpec(); buildCat(); buildChem(); buildRx(); buildCasc(); buildEpi(); if(window.buildIns)buildIns(); if(window.buildGp)buildGp();
   if(window.buildExam)buildExam();
 }
 function setLang(l){
@@ -900,47 +919,146 @@ document.getElementById('bCasc').addEventListener('click',function(){
     cascTimers.push(setTimeout(function(){CASC.step=i;},(i-1)*550));
   })(i);
 });
-/* ---------- Tab 4: GPCR mechanism ---------- */
-var gpPhase=0, gpTimer=null;
+/* ---------- Tab 4: GPCR mechanism as a step-driven model with hover ---------- */
+var GPIDX=0;
+function buildGp(){
+  var st=D().dyn.gpSteps[GPIDX];
+  document.getElementById('gpStep').innerHTML='<b>'+(LANG==='vi'?'Bước ':'Step ')+(GPIDX+1)+'/6 · '+st.t+'</b><br>'+st.d;
+}
+document.getElementById('bGpPrev').addEventListener('click',function(){GPIDX=Math.max(0,GPIDX-1);buildGp();});
+document.getElementById('bGpNext').addEventListener('click',function(){GPIDX=Math.min(5,GPIDX+1);buildGp();});
+document.getElementById('bGpReset').addEventListener('click',function(){GPIDX=0;buildGp();});
+buildGp();
 var cvG=document.getElementById('cvGPCR'), gg=cvG.getContext('2d');
-document.getElementById('bGpGo').addEventListener('click',function(){
-  if(gpTimer)return; gpPhase=1;
-  gpTimer=setInterval(function(){gpPhase++; if(gpPhase>=4){gpPhase=4;clearInterval(gpTimer);gpTimer=null;}},1700);
-});
-document.getElementById('bGpReset').addEventListener('click',function(){
-  if(gpTimer){clearInterval(gpTimer);gpTimer=null;} gpPhase=0;
-});
+var GPT=0, GPLAST=-1, GPHIT=[];
 function gpDraw(){
-  var L=D().dyn.gpL; gg.clearRect(0,0,1080,420);
-  gg.font='600 13px Be Vietnam Pro,Arial';
+  if(GPIDX!==GPLAST){GPLAST=GPIDX;GPT=0;}
+  var L=D().dyn.gpL, st=GPIDX, t=GPT;
+  GPHIT=[];
+  gg.clearRect(0,0,1080,430);
+  gg.font='600 12.5px Be Vietnam Pro,Arial';
+  gg.fillStyle='#475569';
+  gg.fillText(LANG==='vi'?'Ngoài tế bào':'Outside the cell',30,42);
+  gg.fillText(LANG==='vi'?'Trong tế bào (tế bào chất)':'Inside the cell (cytoplasm)',30,404);
   // membrane
-  gg.fillStyle='#93c5fd';gg.fillRect(60,185,960,22);gg.fillStyle='#fcd34d';gg.fillRect(60,207,960,22);
-  // GPCR serpentine
-  gg.strokeStyle='#7c3aed';gg.lineWidth=15;gg.beginPath();
-  gg.moveTo(390,160);
-  for(var i=0;i<7;i++){var x=390+i*26;gg.lineTo(x+(i%2?26:0),i%2?245:160);}
-  gg.stroke();
-  gg.fillStyle='#0f172a';gg.fillText(L.rec,330,140);
-  // ligand approaches / docks by phase
-  var ly=gpPhase===0?70:132, lx=440;
-  gg.fillStyle='#e4572e';gg.beginPath();gg.arc(lx,ly,13,0,6.29);gg.fill();
-  gg.fillStyle='#0f172a';gg.fillText(L.lig,lx-16,ly-22);
-  // G protein: alpha + beta/gamma
-  var ax=gpPhase>=3?700:600, ay=268;
-  gg.fillStyle='#f59e0b';gg.beginPath();gg.arc(600,268,20,0,6.29);gg.fill();
-  gg.fillStyle='#fbbf24';gg.beginPath();gg.arc(ax,ay,17,0,6.29);gg.fill();
-  gg.fillStyle='#0f172a';gg.fillText(L.gp,560,320);
-  gg.font='700 12px Arial';gg.fillText(gpPhase>=2?'GTP':'GDP',ax-11,ay+4);gg.font='600 13px Be Vietnam Pro,Arial';
-  if(gpPhase>=3)gg.fillText(L.al,ax-16,ay-28);
-  // effector + cAMP
-  gg.fillStyle='#16a34a';gg.beginPath();gg.roundRect(790,243,110,52,12);gg.fill();
-  gg.fillStyle='#fff';gg.fillText(L.eff,800,273);
-  if(gpPhase>=4){gg.fillStyle='#f59e0b';for(var c=0;c<8;c++){gg.beginPath();gg.arc(920+((c*37)%120),250+((c*29)%70),6,0,6.29);gg.fill();}
-    gg.fillStyle='#b45309';gg.fillText(L.camp,930,240);}
-  document.getElementById('gpStep').textContent=L.steps[gpPhase];
+  gg.fillStyle='#93c5fd'; gg.fillRect(30,182,1020,24);
+  gg.fillStyle='#fcd34d'; gg.fillRect(30,206,1020,24);
+  gg.fillStyle='#475569'; gg.fillText(LANG==='vi'?'Màng tế bào':'Cell membrane',36,170);
+  GPHIT.push({k:'mem',x:30,y:182,w:1020,h:48});
+  // ligand: rests outside, docks at step 2 of the stepper (index 1)
+  var lx,ly;
+  if(st===0){lx=215; ly=92+Math.sin(t/14)*4;}
+  else if(st===1){var pr=Math.min(1,t/45); lx=215+(395-215)*pr; ly=92+(138-92)*pr;}
+  else{lx=395; ly=138;}
+  // GPCR: 7 transmembrane spans; odd spans shift when the shape changes (step index >= 2)
+  var shift=st>=2?6:0;
+  gg.strokeStyle=st>=2?'#8b5cf6':'#7c3aed'; gg.lineWidth=15; gg.lineCap='round';
+  gg.beginPath();
+  for(var i2=0;i2<7;i2++){
+    var sx=316+i2*24;
+    gg.moveTo(sx,158+(i2%2?shift:0)); gg.lineTo(sx,254-(i2%2?0:shift));
+  }
+  gg.stroke(); gg.lineCap='butt';
+  if(st>=1&&st<=2){ // binding pocket glow
+    gg.strokeStyle='rgba(22,163,74,'+(0.45+0.3*Math.sin(t/7))+')'; gg.lineWidth=3;
+    gg.beginPath(); gg.arc(395,146,20,0,6.29); gg.stroke();
+  }
+  gg.fillStyle='#5b21b6'; gg.font='700 13px Be Vietnam Pro,Arial';
+  gg.fillText(L.rec,300,132); gg.font='600 12.5px Be Vietnam Pro,Arial';
+  GPHIT.push({k:'gpcr',x:300,y:140,w:190,h:126});
+  // the ligand itself (drawn over the pocket)
+  gg.fillStyle='#e4572e'; gg.beginPath(); gg.arc(lx,ly,13,0,6.29); gg.fill();
+  gg.fillStyle='#7c2d12'; gg.fillText(L.lig,lx-30,ly-22);
+  GPHIT.push({k:'lig',x:lx-18,y:ly-18,w:36,h:36});
+  // G protein: alpha slides along the inner membrane face at step index 4
+  var ax=452;
+  if(st===4)ax=452+Math.min(196,t*3.2);
+  if(st>=5)ax=648;
+  var ay=274;
+  // beta-gamma pair stays by the receptor
+  gg.fillStyle='#0d9488'; gg.beginPath(); gg.arc(486,284,13,0,6.29); gg.fill();
+  gg.fillStyle='#16a34a'; gg.beginPath(); gg.arc(501,268,9,0,6.29); gg.fill();
+  gg.fillStyle='#fff'; gg.font='700 11px Arial'; gg.fillText('β',482,288); gg.fillText('γ',498,272);
+  gg.font='600 12.5px Be Vietnam Pro,Arial';
+  GPHIT.push({k:'gbg',x:468,y:250,w:46,h:50});
+  // alpha subunit
+  gg.fillStyle=st>=3?'#1d4ed8':'#2563eb'; gg.beginPath(); gg.arc(ax,ay,18,0,6.29); gg.fill();
+  gg.fillStyle='#fff'; gg.font='700 13px Arial'; gg.fillText('α',ax-4,ay+5);
+  gg.font='600 12.5px Be Vietnam Pro,Arial';
+  gg.fillStyle='#1e3a8a'; gg.fillText(L.gp,424,326);
+  GPHIT.push({k:'ga',x:ax-20,y:ay-20,w:40,h:40});
+  // GDP / GTP badge on alpha
+  var badge=null, bx2=ax-32, by2=ay-34;
+  if(st<3)badge='gdp';
+  else if(st===3){
+    if(t<38){ // GDP leaves and fades
+      gg.globalAlpha=Math.max(0,1-t/38);
+      gg.fillStyle='#64748b'; gg.beginPath(); gg.roundRect(bx2-t*0.7,by2-t*0.5,36,17,5); gg.fill();
+      gg.fillStyle='#fff'; gg.font='700 10px Arial'; gg.fillText('GDP',bx2-t*0.7+7,by2-t*0.5+12); gg.font='600 12.5px Be Vietnam Pro,Arial';
+      gg.globalAlpha=1;
+      GPHIT.push({k:'gdp',x:bx2-30,y:by2-20,w:40,h:22});
+    }
+    if(t>=24){ // GTP arrives
+      var pr2=Math.min(1,(t-24)/34), gx2=560+(bx2-560)*pr2, gy2=336+(by2-336)*pr2;
+      gg.fillStyle='#16a34a'; gg.beginPath(); gg.roundRect(gx2,gy2,36,17,5); gg.fill();
+      gg.fillStyle='#fff'; gg.font='700 10px Arial'; gg.fillText('GTP',gx2+7,gy2+12); gg.font='600 12.5px Be Vietnam Pro,Arial';
+      if(pr2>=1)badge='gtp';
+      GPHIT.push({k:'gtp',x:gx2,y:gy2,w:36,h:17});
+    }
+  }
+  else badge='gtp';
+  if(badge){
+    gg.fillStyle=badge==='gdp'?'#64748b':'#16a34a';
+    gg.beginPath(); gg.roundRect(bx2,by2,36,17,5); gg.fill();
+    gg.fillStyle='#fff'; gg.font='700 10px Arial'; gg.fillText(badge==='gdp'?'GDP':'GTP',bx2+7,by2+12); gg.font='600 12.5px Be Vietnam Pro,Arial';
+    GPHIT.push({k:badge,x:bx2,y:by2,w:36,h:17});
+  }
+  // effector enzyme (adenylyl cyclase) anchored in the membrane
+  var efOn=st>=5;
+  gg.fillStyle=efOn?'#0891b2':'#67e8f9';
+  gg.beginPath(); gg.roundRect(672,224,124,58,14); gg.fill();
+  if(efOn){ gg.strokeStyle='rgba(8,145,178,'+(0.4+0.3*Math.sin(t/7))+')'; gg.lineWidth=3;
+    gg.beginPath(); gg.roundRect(666,218,136,70,16); gg.stroke(); }
+  gg.fillStyle='#164e63'; gg.fillText('Adenylyl cyclase',676,308);
+  GPHIT.push({k:'eff',x:672,y:224,w:124,h:58});
+  // ATP -> cAMP at the final step
+  if(st>=5){
+    gg.fillStyle='rgba(22,163,74,0.07)'; gg.fillRect(620,296,430,118);
+    var nA=Math.max(0,3-Math.floor(t/30));
+    gg.fillStyle='#0369a1';
+    for(var a2=0;a2<nA;a2++){ gg.beginPath(); gg.arc(692+a2*30,338+((a2*13)%22),6,0,6.29); gg.fill(); }
+    if(nA>0){ gg.fillStyle='#0c4a6e'; gg.fillText('ATP',688,326); GPHIT.push({k:'atp',x:680,y:318,w:96,h:48}); }
+    var nC=Math.min(22,Math.floor(t/5));
+    gg.fillStyle='#f59e0b';
+    for(var c2=0;c2<nC;c2++){
+      var cx3=676+((c2*61)%330), cy3=306+((c2*37)%84)+Math.sin(t/15+c2)*3;
+      gg.beginPath(); gg.arc(cx3,cy3,5.5,0,6.29); gg.fill();
+    }
+    if(nC>2){ gg.fillStyle='#92400e'; gg.fillText(L.camp,806,402); }
+    GPHIT.push({k:'camp',x:640,y:296,w:400,h:118});
+  }
+  GPT++;
   requestAnimationFrame(gpDraw);
 }
 gpDraw();
+/* hover: name + function for every GPCR component */
+var gpTip=document.getElementById('gpTip');
+cvG.addEventListener('mousemove',function(e){
+  var r=cvG.getBoundingClientRect();
+  var mx=(e.clientX-r.left)*1080/r.width, my=(e.clientY-r.top)*430/r.height;
+  var hit=null;
+  for(var i3=0;i3<GPHIT.length;i3++){var h=GPHIT[i3]; if(mx>=h.x&&mx<=h.x+h.w&&my>=h.y&&my<=h.y+h.h)hit=h;}
+  var H=D().dyn.gpHover;
+  if(!hit||!H||!H[hit.k]){gpTip.style.display='none'; cvG.style.cursor='default'; return;}
+  var it=H[hit.k];
+  gpTip.innerHTML='<b>'+it[0]+'</b><br>'+it[1];
+  var wrap=cvG.parentElement.getBoundingClientRect();
+  var x=e.clientX-wrap.left+16, y=e.clientY-wrap.top+16;
+  if(x>wrap.width-272)x=e.clientX-wrap.left-268;
+  gpTip.style.left=x+'px'; gpTip.style.top=y+'px'; gpTip.style.display='block';
+  cvG.style.cursor='pointer';
+});
+cvG.addEventListener('mouseleave',function(){gpTip.style.display='none';});
 </script>
 
 <script>
